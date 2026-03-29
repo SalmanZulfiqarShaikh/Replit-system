@@ -1,4 +1,4 @@
-import { ReactNode, useState } from "react";
+import { ReactNode } from "react";
 import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/lib/auth";
@@ -9,11 +9,7 @@ import {
   TrendingUp, 
   Map, 
   FileText,
-  LogIn,
-  LogOut,
   User,
-  Eye,
-  EyeOff
 } from "lucide-react";
 
 const navItems = [
@@ -25,121 +21,9 @@ const navItems = [
   { href: "/report", label: "Weekly Report", icon: FileText },
 ];
 
-function LoginScreen() {
-  const { login } = useAuth();
-  const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
-
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!password.trim()) return;
-    setLoading(true);
-    setError("");
-    try {
-      await login(password);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Login failed");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  return (
-    <div className="min-h-screen bg-background flex items-center justify-center p-4">
-      <div className="max-w-md w-full text-center space-y-8">
-        <div className="space-y-3">
-          <div className="flex items-center justify-center mb-6">
-            <span className="text-4xl font-mono font-bold text-white tracking-widest">SALMAN'S<br/>SYSTEM</span>
-          </div>
-          <p className="text-muted-foreground font-mono text-sm tracking-widest uppercase">
-            AI Roadmap Accountability
-          </p>
-        </div>
-
-        <div className="bg-card border border-border rounded-xl p-8 space-y-6">
-          <div className="space-y-2">
-            <p className="text-white font-semibold">10-Month AI Engineering Roadmap</p>
-            <p className="text-muted-foreground text-sm">
-              Track your progress. Stay accountable. Ship the startup.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-3 gap-4 text-center">
-            {[
-              { label: "Daily Check-ins", emoji: "📋" },
-              { label: "Pomodoro Timer", emoji: "🍅" },
-              { label: "AI Coaching", emoji: "🤖" },
-            ].map((f) => (
-              <div key={f.label} className="space-y-1">
-                <div className="text-2xl">{f.emoji}</div>
-                <p className="text-xs text-muted-foreground font-mono">{f.label}</p>
-              </div>
-            ))}
-          </div>
-
-          <form onSubmit={handleLogin} className="space-y-4">
-            <div className="relative">
-              <input
-                type={showPassword ? "text" : "password"}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter password"
-                autoComplete="current-password"
-                className="w-full bg-background border border-border rounded-lg py-3 px-4 text-white font-mono text-sm placeholder:text-muted-foreground focus:outline-none focus:border-white/40 pr-12"
-              />
-              <button
-                type="button"
-                onClick={() => setShowPassword((v) => !v)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-white transition-colors"
-                tabIndex={-1}
-              >
-                {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-              </button>
-            </div>
-
-            {error && (
-              <p className="text-red-400 text-xs font-mono text-left">{error}</p>
-            )}
-
-            <button
-              type="submit"
-              disabled={loading || !password.trim()}
-              className="w-full flex items-center justify-center gap-3 bg-primary hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed text-black font-bold py-3 px-6 rounded-lg transition-all duration-200 font-mono text-sm tracking-wide"
-            >
-              <LogIn className="w-5 h-5" />
-              {loading ? "LOGGING IN..." : "LOG IN TO ACCESS SYSTEM"}
-            </button>
-          </form>
-        </div>
-
-        <p className="text-muted-foreground text-xs font-mono">
-          PHASE 1 ACTIVE — BACKEND + VOICE AI FOUNDATIONS
-        </p>
-      </div>
-    </div>
-  );
-}
-
 export function Layout({ children }: { children: ReactNode }) {
   const [location] = useLocation();
-  const { user, isLoading, isAuthenticated, logout } = useAuth();
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="text-center space-y-3">
-          <p className="font-mono font-bold text-xl text-white tracking-widest">SALMAN'S SYSTEM</p>
-          <p className="text-muted-foreground font-mono text-sm">LOADING...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (!isAuthenticated) {
-    return <LoginScreen />;
-  }
+  const { user } = useAuth();
 
   return (
     <div className="flex min-h-screen w-full bg-background text-foreground font-sans">
@@ -173,9 +57,9 @@ export function Layout({ children }: { children: ReactNode }) {
           })}
         </nav>
         
-        <div className="p-4 border-t border-border/50 space-y-2">
+        <div className="p-4 border-t border-border/50">
           <div className="flex items-center gap-3 px-4 py-3 rounded-lg bg-secondary/50 border border-border">
-            <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center border border-white/20 overflow-hidden">
+            <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center border border-white/20">
               <User className="w-4 h-4 text-white" />
             </div>
             <div className="flex-1 overflow-hidden">
@@ -183,13 +67,6 @@ export function Layout({ children }: { children: ReactNode }) {
               <p className="text-xs text-muted-foreground font-mono truncate">Phase 1 Active</p>
             </div>
           </div>
-          <button
-            onClick={logout}
-            className="w-full flex items-center justify-center gap-2 text-muted-foreground hover:text-white text-xs font-mono py-2 px-4 rounded-lg hover:bg-secondary/50 transition-colors"
-          >
-            <LogOut className="w-3 h-3" />
-            LOGOUT
-          </button>
         </div>
       </aside>
 
@@ -198,9 +75,6 @@ export function Layout({ children }: { children: ReactNode }) {
         {/* Mobile Header */}
         <header className="md:hidden flex items-center justify-between p-4 border-b border-border bg-sidebar">
           <span className="font-mono font-bold text-sm text-white tracking-widest">SALMAN'S SYSTEM</span>
-          <button onClick={logout} className="text-muted-foreground">
-            <LogOut className="w-4 h-4" />
-          </button>
         </header>
 
         {/* Mobile Nav (Bottom Bar) */}
