@@ -5,7 +5,7 @@ import {
   episodeProgressTable,
   userProfilesTable,
 } from "@workspace/db/schema";
-import { eq, gte, and } from "drizzle-orm";
+import { eq, gte, and, desc } from "drizzle-orm";
 import { GenerateScheduleBody } from "@workspace/api-zod";
 
 const router: IRouter = Router();
@@ -40,6 +40,21 @@ async function callGroq(prompt: string): Promise<string> {
   return data.choices[0]?.message?.content || "";
 }
 
+async function callN8nWebhook(payload: Record<string, unknown>): Promise<void> {
+  const webhookUrl = process.env.N8N_WEBHOOK_URL;
+  if (!webhookUrl) return;
+  try {
+    await fetch(webhookUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+      signal: AbortSignal.timeout(5000),
+    });
+  } catch {
+    // Non-fatal — don't break the main flow if n8n is down
+  }
+}
+
 router.post("/ai/schedule", async (req, res) => {
   if (!req.isAuthenticated()) {
     res.status(401).json({ error: "Unauthorized" });
@@ -47,13 +62,40 @@ router.post("/ai/schedule", async (req, res) => {
   }
   const body = GenerateScheduleBody.parse(req.body);
 
+  // ─── LLM Memory: last 7 check-ins ────────────────────────────────────────
+  const sevenDaysAgo = new Date();
+  sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+  const pastCheckins = await db
+    .select()
+    .from(dailyCheckinsTable)
+    .where(
+      and(
+        eq(dailyCheckinsTable.userId, req.user.id),
+        gte(dailyCheckinsTable.date, sevenDaysAgo.toISOString().split("T")[0])
+      )
+    )
+    .orderBy(desc(dailyCheckinsTable.date))
+    .limit(7);
+
+  const memoryLines = pastCheckins
+    .slice(1) // skip today's checkin (index 0 is today's since we ordered desc)
+    .map((c) => {
+      const taskSnippet = c.tasks?.slice(0, 120) || "no notes";
+      return `  • ${c.date}: ${c.hoursLogged}h logged — "${taskSnippet}"`;
+    });
+
+  const memoryBlock = memoryLines.length > 0
+    ? `RECENT HISTORY (last ${memoryLines.length} check-ins):\n${memoryLines.join("\n")}\n`
+    : "";
+
+  // ─── Today's schedule constraints ─────────────────────────────────────────
   const scheduleLines: string[] = [];
   if (body.hasOffice) scheduleLines.push(`  - Office: ${body.officeHours || "9am–3pm"}`);
   if (body.hasUni) scheduleLines.push(`  - University: ${body.uniHours || "3pm–9pm"}`);
   if (body.commitments) scheduleLines.push(`  - Other commitments: ${body.commitments}`);
-  if (scheduleLines.length === 0) scheduleLines.push("  - No office or uni today");
+  if (scheduleLines.length === 0) scheduleLines.push("  - Free day, no fixed commitments");
 
-  const prompt = `You are an AI accountability coach for a Pakistani developer learning AI engineering. Be direct and concise. Casual tone is fine (occasional "bhai").
+  const prompt = `You are an AI accountability coach for a Pakistani developer on a 10-month AI engineering roadmap. Be direct and concise. Casual tone okay (occasional "bhai").
 
 TODAY'S DATE: ${new Date().toDateString()}
 CURRENT PHASE: ${body.currentPhase}
@@ -62,10 +104,10 @@ AVAILABLE CODING TIME: ${body.availableHours} hours
 TODAY'S SCHEDULE:
 ${scheduleLines.join("\n")}
 
-${body.yesterdayWork ? `YESTERDAY'S PROGRESS:\n${body.yesterdayWork}\n` : ""}
-TODAY'S PLAN (user input):\n${body.tasks}
+${memoryBlock}${body.yesterdayWork ? `YESTERDAY'S PROGRESS:\n${body.yesterdayWork}\n` : ""}TODAY'S PLAN (user input):
+${body.tasks}
 
-Based on the actual available time window (accounting for office/uni hours), generate a practical schedule. Don't suggest coding during office or uni hours.
+Based on the actual available time window, generate a realistic schedule. Don't suggest coding during office/uni hours. If recent history shows a pattern (skipping, slow progress, momentum), acknowledge it.
 
 Format EXACTLY as:
 TASKS:
@@ -74,9 +116,9 @@ TASKS:
 
 POMODORO: [e.g. "Start at 9pm — 2x 25min sessions before sleep"]
 
-MOTIVATION: [one punchy sentence]
+MOTIVATION: [one punchy sentence based on their recent history]
 
-Max 4 tasks. Be realistic about available hours. If yesterday had good progress, build on it.`;
+Max 4 tasks. Be honest if they've been slacking.`;
 
   try {
     const aiResponse = await callGroq(prompt);
@@ -105,9 +147,22 @@ Max 4 tasks. Be realistic about available hours. If yesterday had good progress,
         )
       );
 
+    const taskList = tasks.length > 0 ? tasks : ["Focus on your current roadmap phase"];
+
+    // ─── n8n webhook → Gmail notification ─────────────────────────────────
+    const today = new Date().toLocaleDateString("en-PK", { weekday: "long", month: "short", day: "numeric" });
+    await callN8nWebhook({
+      subject: `[SYSTEM.INIT] Your Schedule — ${today}`,
+      message: `TASKS FOR TODAY:\n${taskList.map((t, i) => `${i + 1}. ${t}`).join("\n")}\n\nPOMODORO: ${pomodoroRecommendation}\n\nMOTIVATION: ${motivation}`,
+      tasks: taskList,
+      pomodoro: pomodoroRecommendation,
+      motivation,
+      date: today,
+    });
+
     res.json({
       schedule: aiResponse,
-      tasks: tasks.length > 0 ? tasks : ["Focus on your current roadmap phase"],
+      tasks: taskList,
       pomodoroRecommendation: `${pomodoroRecommendation} | ${motivation}`,
     });
   } catch (err) {
