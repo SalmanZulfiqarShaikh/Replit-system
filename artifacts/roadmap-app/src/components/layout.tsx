@@ -30,7 +30,7 @@ function LoginScreen() {
       <div className="max-w-md w-full text-center space-y-8">
         <div className="space-y-3">
           <div className="flex items-center justify-center mb-6">
-            <span className="text-5xl font-mono font-bold text-white tracking-widest">SALMA</span>
+            <span className="text-4xl font-mono font-bold text-white tracking-widest">SALMAN'S<br/>SYSTEM</span>
           </div>
           <p className="text-muted-foreground font-mono text-sm tracking-widest uppercase">
             AI Roadmap Accountability
@@ -63,7 +63,7 @@ function LoginScreen() {
             className="w-full flex items-center justify-center gap-3 bg-primary hover:bg-primary/90 text-black font-bold py-3 px-6 rounded-lg transition-all duration-200 font-mono text-sm tracking-wide"
           >
             <LogIn className="w-5 h-5" />
-            LOG IN TO ACCESS SALMA
+            LOG IN TO ACCESS SYSTEM
           </button>
         </div>
 
@@ -83,7 +83,7 @@ export function Layout({ children }: { children: ReactNode }) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center space-y-3">
-          <p className="font-mono font-bold text-2xl text-white tracking-widest">SALMA</p>
+          <p className="font-mono font-bold text-xl text-white tracking-widest">SALMAN'S SYSTEM</p>
           <p className="text-muted-foreground font-mono text-sm">LOADING...</p>
         </div>
       </div>
@@ -100,7 +100,7 @@ export function Layout({ children }: { children: ReactNode }) {
       <aside className="hidden md:flex flex-col w-64 border-r border-border bg-sidebar h-screen sticky top-0">
         <div className="p-6 flex items-center gap-3 border-b border-border/50">
           <div>
-            <h1 className="font-mono font-bold text-xl leading-tight text-white tracking-widest">SALMA</h1>
+            <h1 className="font-mono font-bold text-base leading-tight text-white tracking-widest">SALMAN'S SYSTEM</h1>
             <p className="text-xs text-muted-foreground font-mono mt-0.5">AI Roadmap</p>
           </div>
         </div>
@@ -154,7 +154,7 @@ export function Layout({ children }: { children: ReactNode }) {
       <main className="flex-1 flex flex-col min-w-0 overflow-hidden">
         {/* Mobile Header */}
         <header className="md:hidden flex items-center justify-between p-4 border-b border-border bg-sidebar">
-          <span className="font-mono font-bold text-lg text-white tracking-widest">SALMA</span>
+          <span className="font-mono font-bold text-sm text-white tracking-widest">SALMAN'S SYSTEM</span>
           <button onClick={logout} className="text-muted-foreground">
             <LogOut className="w-4 h-4" />
           </button>
