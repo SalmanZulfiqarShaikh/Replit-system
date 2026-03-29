@@ -7,6 +7,7 @@ import {
 } from "@workspace/db/schema";
 import { eq, gte, and, desc } from "drizzle-orm";
 import { GenerateScheduleBody } from "@workspace/api-zod";
+import { buildWeeklyReportHtml } from "../lib/weekly-report-sender";
 
 const router: IRouter = Router();
 
@@ -240,11 +241,33 @@ Keep it under 150 words. Be honest if they underperformed.`;
     const aiResponse = await callGroq(prompt);
 
     const nextWeekEpisodeNum = episodesCompleted + 3;
+    const nextWeekGoal = `Log ${goalHours}+ hours and complete ${nextWeekEpisodeNum} more episodes`;
+
+    // Send to n8n weekly webhook if configured
+    const weeklyWebhookUrl = process.env.N8N_WEEKLY_WEBHOOK_URL;
+    if (weeklyWebhookUrl) {
+      const html = buildWeeklyReportHtml(aiResponse, {
+        hoursLogged,
+        episodesCompleted,
+        goalHours,
+        nextWeekGoal,
+        streak: profile?.currentStreak || 0,
+        currentPhase: profile?.currentPhase || "Phase 1",
+      });
+      const subject = `[SYSTEM.INIT] Weekly Report — ${new Date().toLocaleDateString("en-PK", { month: "short", day: "numeric" })}`;
+      fetch(weeklyWebhookUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ subject, message: aiResponse, html, hoursLogged, episodesCompleted, nextWeekGoal }),
+        signal: AbortSignal.timeout(5000),
+      }).catch(() => {});
+    }
+
     res.json({
       report: aiResponse,
       hoursLogged,
       episodesCompleted,
-      nextWeekGoal: `Log ${goalHours}+ hours and complete ${nextWeekEpisodeNum} more episodes`,
+      nextWeekGoal,
       motivationalMessage: aiResponse.split("\n").slice(-2).join(" ").trim(),
     });
   } catch (err) {
