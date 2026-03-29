@@ -6,3 +6,9 @@ id = "5ouZ3B04VWdIxgmclsMEh"
 uri = "file://attached_assets/Salman_System_n8n_workflow.json"
 type = "unspecified"
 title = "Salman's System — Updated n8n Workflow"
+
+[[outputs]]
+id = "yrbId3OU_01pj7YytegjN"
+uri = "file://attached_assets/Salman_System_n8n_workflow_fixed.json"
+type = "unspecified"
+title = "Salman's System — Fixed n8n Workflow"

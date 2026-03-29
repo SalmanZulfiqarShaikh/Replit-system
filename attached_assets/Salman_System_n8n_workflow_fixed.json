@@ -1,0 +1,344 @@
+{
+  "name": "Salman's System – AI Roadmap Automations",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 9
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [-4288, 48],
+      "id": "1ba7c215-ceef-407f-ba71-7f9120f92110",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "sendTo": "ss3000569@gmail.com",
+        "subject": "⏰ Salman's System — Time to Log Your Day",
+        "message": "Assalamu Alaikum Salman,\n\nYour daily check-in window is open. Log your tasks, hours, and get your AI-generated schedule.\n\n👉 Open the app and do your check-in now.\n\n— Salman's System",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [-3984, 96],
+      "id": "194c5abe-e15d-4a4f-8dff-6f921e34f738",
+      "name": "Send a message",
+      "webhookId": "7733dc93-07fc-46c4-a0a5-c5a99a6640b6",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "S3qd4mIiist2AGB9",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## ⏰ Daily Morning Reminder\nFires at 9am daily. Sends a nudge to open the app and complete check-in.",
+        "height": 336,
+        "width": 608
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [-4336, -80],
+      "typeVersion": 1,
+      "id": "cfbfb588-0b0c-47be-bd54-564bdc22cfda",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## 📋 Daily AI Schedule → Gmail\nWebhook receives {subject, tasks, pomodoro, motivation, date} from the app.\nAI Agent formats it and returns {Subject, Message}.\nGmail sends using those structured fields.",
+        "height": 624,
+        "width": 944,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [-3504, 96],
+      "typeVersion": 1,
+      "id": "e51e82f0-a490-403f-ae5b-37483cd4f415",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "9d8bfa35-5f11-4351-9063-2cd9cc2cca53",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [-3360, 464],
+      "id": "8fcc2a58-87b6-40ee-9f29-228214fc4f84",
+      "name": "Webhook",
+      "webhookId": "9d8bfa35-5f11-4351-9063-2cd9cc2cca53"
+    },
+    {
+      "parameters": {
+        "sendTo": "ss3000569@gmail.com",
+        "subject": "={{ $json.output.Subject }}",
+        "message": "={{ $json.output.Message }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [-2784, 464],
+      "id": "ec75a03a-b00b-423d-9d2f-a4e7841c8236",
+      "name": "Send a message1",
+      "webhookId": "62818c29-cee4-4751-8878-aba82c9a7190",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "S3qd4mIiist2AGB9",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "5c02fbdc-b090-4a69-8d6e-f8e9a9c3c7ac",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [-2096, 752],
+      "id": "1b9ce6f6-2721-4e53-9139-b938884a6df3",
+      "name": "Webhook1",
+      "webhookId": "5c02fbdc-b090-4a69-8d6e-f8e9a9c3c7ac"
+    },
+    {
+      "parameters": {
+        "sendTo": "ss3000569@gmail.com",
+        "subject": "={{ $json.output.Subject }}",
+        "message": "={{ $json.output.Message }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [-1584, 848],
+      "id": "f83710ce-27bc-484d-bb1b-4ba33c4bfaf2",
+      "name": "Send a message2",
+      "webhookId": "853a99a7-87c9-449b-90bd-1a9dc1d7cd61",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "S3qd4mIiist2AGB9",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## 📊 Sunday Weekly Report → Gmail\nWebhook receives {subject, message, hoursLogged, episodesCompleted, nextWeekGoal} from app.\nAI Agent formats and returns {Subject, Message}.\nGmail sends using those structured fields.",
+        "height": 432,
+        "width": 816,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [-2240, 608],
+      "typeVersion": 1,
+      "id": "6fc96f9f-b137-4c62-92d1-c3dbdc47a82f",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Weekly performance data:\n- Hours logged: {{ $json.body.hoursLogged }} / 15 target\n- Episodes completed: {{ $json.body.episodesCompleted }}\n- Next week goal: {{ $json.body.nextWeekGoal }}\n- AI analysis: {{ $json.body.message }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "You are the accountability engine for Salman's System — a personal AI tracking app for Salman, a solo Pakistani developer on a 10-month AI engineering roadmap targeting $3K/mo MRR by February 2027.\n\nYou receive weekly performance data. Write a punchy, honest weekly report email.\n\nReturn ONLY a JSON object with exactly two fields:\n- Subject: the email subject line (e.g. \"[Salman's System] Weekly Report — you logged X/15 hrs\")\n- Message: the full email body text\n\nThe Message must:\n1. Open with a direct performance verdict — did he hit the 15 hrs/week goal?\n2. Show the exact numbers: hours logged, episodes completed\n3. Set a specific, concrete goal for next week\n4. End with a motivational line that is direct and personal\n\nTone: Casual Pakistani tech bro mentor. Can use 'bhai' once. Never generic. Be honest if he underperformed. Under 200 words total in Message."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [-1904, 720],
+      "id": "dc0c5efc-6c9f-4ad5-bbdf-fc5159d51635",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Daily check-in data:\n- Date: {{ $json.body.date }}\n- Tasks: {{ $json.body.tasks }}\n- Pomodoro: {{ $json.body.pomodoro }}\n- Motivation: {{ $json.body.motivation }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "You are the daily schedule formatter for Salman's System — a personal AI tracking app for Salman, a solo Pakistani developer on a 10-month AI engineering roadmap.\n\nYou receive daily check-in data after Salman completes his check-in. Format a clean, actionable daily schedule email.\n\nReturn ONLY a JSON object with exactly two fields:\n- Subject: the email subject line (e.g. \"[Salman's System] Your Schedule — Monday, 29 Mar\")\n- Message: the full email body text\n\nThe Message must follow this exact format:\n\nAssalamu Alaikum Salman,\n\nHere's your mission for [date]:\n\n📋 TASKS:\n1. [task 1]\n2. [task 2]\n...\n\n🍅 POMODORO:\n[pomodoro recommendation]\n\n⚡ MOTIVATION:\n[motivation line]\n\nStay locked in. — Salman's System\n\nDo NOT add anything extra. Keep it clean and scannable. Max 150 words in Message."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [-3136, 352],
+      "id": "f99b2c55-8316-4094-9bfa-b9a75a79229d",
+      "name": "AI Agent1"
+    },
+    {
+      "parameters": {
+        "model": "llama-3.3-70b-versatile",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [-2032, 928],
+      "id": "94ebde7e-671e-44d3-b7bc-0339fe84e24d",
+      "name": "Groq Chat Model",
+      "credentials": {
+        "groqApi": {
+          "id": "96EP8YM0klKlCij7",
+          "name": "Groq account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "llama-3.3-70b-versatile",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [-3072, 576],
+      "id": "fbb1e15f-c19f-4c09-827e-51b7775bdd02",
+      "name": "Groq Chat Model1",
+      "credentials": {
+        "groqApi": {
+          "id": "96EP8YM0klKlCij7",
+          "name": "Groq account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n\t\"Subject\": \"[Salman's System] Your Schedule — Monday, 29 Mar\",\n\t\"Message\": \"Assalamu Alaikum Salman,\\n\\nHere's your mission for today...\"\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [-1744, 928],
+      "id": "de8ab65f-4b40-4307-883d-d08180ec0169",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n\t\"Subject\": \"[Salman's System] Your Schedule — Monday, 29 Mar\",\n\t\"Message\": \"Assalamu Alaikum Salman,\\n\\nHere's your mission for today...\"\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [-2896, 576],
+      "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "name": "Structured Output Parser1"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Send a message2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent1": {
+      "main": [
+        [
+          {
+            "node": "Send a message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser1": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "acc18704-dc45-4a6d-b334-de90c6a1256c",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "4acc210f264950b13ff347724f8eba1b33bf75c18b0454273516017c1888ae73"
+  },
+  "id": "g9Q73cx4ign2fUu3WrCa6",
+  "tags": []
+}
