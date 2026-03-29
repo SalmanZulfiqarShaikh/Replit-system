@@ -1,0 +1,50 @@
+Deploy live for 7b49df6: Seed Salman user on server startup — fix FK errors on Supabase
+March 29, 2026 at 11:28 PM
+Deploy started for 7b49df6: Seed Salman user on server startup — fix FK errors on Supabase
+New commit via Auto-Deploy
+March 29, 2026 at 11:23 PM
+Deploy live for 5c397a2: Fix SSL for Supabase DB connection on Render
+March 29, 2026 at 11:09 PM
+Rollback
+Deploy started for 5c397a2: Fix SSL for Supabase DB connection on Render
+New commit via Auto-Deploy
+March 29, 2026 at 11:05 PM
+Deploy live for 3a9e97c: Remove auth — always auto-login as Salman
+March 29, 2026 at 10:56 PM
+Rollback
+Deploy started for 3a9e97c: Remove auth — always auto-login as Salman
+New commit via Auto-Deploy
+March 29, 2026 at 10:52 PM
+Deploy live for 1724857: Add Vite dev proxy for /api → Express API server
+March 29, 2026 at 10:47 PM
+Rollback
+Deploy started for 1724857: Add Vite dev proxy for /api → Express API server
+New commit via Auto-Deploy
+March 29, 2026 at 10:43 PM
+Deploy live for 364865b: Fix Express 5 wildcard route for production static serving
+March 29, 2026 at 10:43 PM
+Rollback
+Deploy started for 364865b: Fix Express 5 wildcard route for production static serving
+Manually triggered by you via Dashboard
+March 29, 2026 at 10:38 PM
+Deploy live for 364865b: Fix Express 5 wildcard route for production static serving
+March 29, 2026 at 10:38 PM
+Rollback
+Deploy started for 364865b: Fix Express 5 wildcard route for production static serving
+New commit via Auto-Deploy
+March 29, 2026 at 10:30 PM
+Deploy failed for d7186bc: Add vercel.json for frontend deployment
+Exited with status 1 while running your code. Check your deploy logs for more information.
+March 29, 2026 at 10:30 PM
+
+Rollback
+Deploy started for d7186bc: Add vercel.json for frontend deployment
+New commit via Auto-Deploy
+March 29, 2026 at 10:27 PM
+Deploy failed for d135f59: Salman's System — migration complete (password auth + Supabase + Render config)
+Exited with status 1 while running your code. Check your deploy logs for more information.
+March 29, 2026 at 10:26 PM
+
+Rollback
+First deploy started for d135f59: Salman's System — migration complete (password auth + Supabase + Render config)
+March 29, 2026 at 10:22 PM
