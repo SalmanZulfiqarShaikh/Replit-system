@@ -1,0 +1,6 @@
+{
+  "buildCommand": "BASE_PATH=/ pnpm --filter @workspace/roadmap-app run build",
+  "outputDirectory": "artifacts/roadmap-app/dist/public",
+  "installCommand": "pnpm install",
+  "framework": null
+}
