@@ -3,7 +3,6 @@ import { db } from "@workspace/db";
 import { dailyCheckinsTable, userProfilesTable } from "@workspace/db/schema";
 import { eq, and } from "drizzle-orm";
 import { CreateCheckinBody } from "@workspace/api-zod";
-import { z } from "zod/v4";
 
 const router: IRouter = Router();
 
@@ -75,17 +74,18 @@ router.post("/checkin", async (req, res) => {
   res.json(checkin);
 });
 
-const ToggleTaskBody = z.object({
-  indices: z.array(z.number().int().min(0)),
-});
-
 router.patch("/checkin/tasks", async (req, res) => {
   if (!req.isAuthenticated()) {
     res.status(401).json({ error: "Unauthorized" });
     return;
   }
 
-  const { indices } = ToggleTaskBody.parse(req.body);
+  const raw = req.body?.indices;
+  if (!Array.isArray(raw) || !raw.every((x: unknown) => typeof x === "number" && Number.isInteger(x) && x >= 0)) {
+    res.status(400).json({ error: "indices must be an array of non-negative integers" });
+    return;
+  }
+  const indices: number[] = raw;
   const today = getTodayDate();
 
   const [existing] = await db
