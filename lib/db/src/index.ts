@@ -10,12 +10,16 @@ if (!process.env.DATABASE_URL) {
   );
 }
 
-const isSupabase = process.env.DATABASE_URL.includes("supabase.co");
+const isSupabase = process.env.DATABASE_URL.includes("supabase");
+const isPooler = process.env.DATABASE_URL.includes("pooler.supabase.com");
 
 export const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: isSupabase ? { rejectUnauthorized: false } : false,
+  // Pooler mode requires max 1 connection per serverless instance
+  max: isPooler ? 1 : 10,
 });
+
 export const db = drizzle(pool, { schema });
 
 export * from "./schema";
