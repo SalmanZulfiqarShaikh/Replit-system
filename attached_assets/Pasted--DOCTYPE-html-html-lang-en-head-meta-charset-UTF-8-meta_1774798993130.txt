@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI SAAS FOUNDER ROADMAP | 2026-2027 🔒</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --bg: #0a0e17;
+            --card: #1a1f2e;
+            --border: #2a3142;
+            --text: #e4e6eb;
+            --dim: #8b92a8;
+            --accent: #10b981;
+            --yellow: #fbbf24;
+            --blue: #3b82f6;
+            --red: #ef4444;
+        }
+        
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0 20px 0;
+            margin-bottom: 10px;
+        }
+        
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+        
+        .subtitle {
+            color: var(--accent);
+            font-size: 14px;
+            font-weight: 600;
+            font-family: 'Space Mono', monospace;
+            letter-spacing: 1px;
+        }
+
+        .schedule-banner {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--blue);
+            letter-spacing: 0.5px;
+        }
+
+        .schedule-banner span {
+            color: var(--text);
+            margin: 0 10px;
+        }
+        
+        .mission {
+            background: linear-gradient(135deg, rgba(16,185,129,0.1) 0%, rgba(16,185,129,0.05) 100%);
+            border: 1px solid rgba(16,185,129,0.3);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 30px;
+        }
+        
+        .mission h2 {
+            color: var(--accent);
+            font-size: 18px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+        
+        .mission p {
+            color: var(--dim);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .timeline-section {
+            margin-bottom: 40px;
+        }
+
+        .timeline-header {
+            font-family: 'Space Mono', monospace;
+            color: var(--blue);
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+            text-transform: uppercase;
+        }
+        
+        .phase {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 16px;
+            position: relative;
+        }
+        
+        .phase-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        .phase-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text);
+        }
+        
+        .phase-date {
+            font-family: 'Space Mono', monospace;
+            font-size: 12px;
+            color: var(--yellow);
+            background: rgba(251, 191, 36, 0.1);
+            padding: 4px 12px;
+            border-radius: 4px;
+        }
+        
+        .phase-desc {
+            color: var(--dim);
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        
+        .skill-tag {
+            font-size: 12px;
+            background: rgba(255,255,255,0.05);
+            color: var(--text);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-family: 'Space Mono', monospace;
+        }
+        
+        .resource {
+            display: inline-block;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 13px;
+            font-family: 'Space Mono', monospace;
+            padding: 6px 14px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            margin-top: 8px;
+            margin-right: 8px;
+            transition: all 0.2s;
+        }
+        
+        .resource:hover {
+            background: rgba(16,185,129,0.1);
+            border-color: var(--accent);
+        }
+
+        .blackout {
+            background: rgba(239, 68, 68, 0.05);
+            border-color: rgba(239, 68, 68, 0.2);
+        }
+
+        .blackout .phase-title { color: var(--red); }
+        .blackout .phase-date { background: rgba(239, 68, 68, 0.1); color: var(--red); }
+
+        .sprint {
+            background: rgba(16, 185, 129, 0.05);
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+            border-top: 1px solid var(--border);
+        }
+        
+        footer p {
+            color: var(--dim);
+            font-size: 13px;
+            font-family: 'Space Mono', monospace;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <header>
+        <h1>AI SAAS FOUNDER ARCHITECTURE</h1>
+        <p class="subtitle">10-MONTH TARGET: FEBRUARY 2027 ($3K/MO MRR)</p>
+    </header>
+
+    <div class="schedule-banner">
+        MON - THURS: CODE & UPSKILL <span>|</span> FRI - SUN: UNI STUDY & LIFE
+    </div>
+
+    <div class="mission">
+        <h2>🎯 THE STRATEGY</h2>
+        <p>Survive UBIT exams by exploiting the runway. Use the Summer Break to speedrun Next.js + Vibe Coding and launch the SaaS MVP. Use the Fall Semester to learn Python Agentic frameworks. Use the Winter Break to upgrade the SaaS to pure Python.</p>
+    </div>
+
+    <div class="timeline-section">
+        <div class="timeline-header">PART 1: THE PRE-EXAM GRIND (MAR 29 - MAY 13)</div>
+        
+        <div class="phase">
+            <div class="phase-header">
+                <div class="phase-title">Phase 1: Backend + Voice AI Foundations</div>
+                <div class="phase-date">~6.5 WEEKS</div>
+            </div>
+            <p class="phase-desc">Secure the API infrastructure. Master Node.js, JWT, and WebSockets. Use the Udemy Voice AI course as a reference dictionary for building bots.</p>
+            <div class="skills">
+                <span class="skill-tag">Node.js + Express</span>
+                <span class="skill-tag">MongoDB / JWT</span>
+                <span class="skill-tag">WebSockets</span>
+                <span class="skill-tag">Voice AI Agents</span>
+            </div>
+            <a href="https://youtube.com/playlist?list=PLinedj3B30sDby4Al-i13hQJGQoRQDfPo" target="_blank" class="resource">▶ Piyush Episodes 23-41</a>
+            <a href="https://www.udemy.com/course/master-ai-voice-agents-automate-calls-with-ai-and-no-code/" target="_blank" class="resource">▶ Udemy Voice AI Course</a>
+        </div>
+    </div>
+
+    <div class="timeline-section">
+        <div class="timeline-header">PART 2: THE BLACKOUT (MAY 14 - JUNE 19)</div>
+
+        <div class="phase blackout">
+            <div class="phase-header">
+                <div class="phase-title">⚠️ 3rd Semester Exams</div>
+                <div class="phase-date">5 WEEKS</div>
+            </div>
+            <p class="phase-desc">ZERO CODING. Full academic lockdown. Survive DSA, COAL, and Multivariable Calculus. Protect the GPA so you can build in peace.</p>
+        </div>
+    </div>
+
+    <div class="timeline-section">
+        <div class="timeline-header">PART 3: THE SUMMER SPRINT (JUNE 20 - JULY 19)</div>
+
+        <div class="phase sprint">
+            <div class="phase-header">
+                <div class="phase-title">Phase 2: Next.js + Postgres Basics</div>
+                <div class="phase-date">~1.5 WEEKS</div>
+            </div>
+            <p class="phase-desc">The syntax bridge. Understand Next.js 15 App Router, Server Actions, and Prisma ORM folder structures *before* letting AI automate it.</p>
+            <div class="skills">
+                <span class="skill-tag">Next.js 15</span>
+                <span class="skill-tag">Server Actions</span>
+                <span class="skill-tag">PostgreSQL + Prisma</span>
+            </div>
+        </div>
+
+        <div class="phase sprint">
+            <div class="phase-header">
+                <div class="phase-title">Phase 3: Hyper-Vibe Coding</div>
+                <div class="phase-date">~1 WEEK</div>
+            </div>
+            <p class="phase-desc">100x acceleration. Master Claude Code, Antigravity, and perfect your `skills.md` / `.cursorrules` to generate entire components instantly.</p>
+            <div class="skills">
+                <span class="skill-tag">Cursor AI</span>
+                <span class="skill-tag">Claude Code</span>
+                <span class="skill-tag">skills.md / rules.md</span>
+                <span class="skill-tag">Supabase + Stripe</span>
+            </div>
+            <a href="https://youtu.be/gcuR_-rzlDw" target="_blank" class="resource">▶ Vibe Coding Course</a>
+        </div>
+
+        <div class="phase sprint">
+            <div class="phase-header">
+                <div class="phase-title">Phase 4: SHIP THE STARTUP 🚀</div>
+                <div class="phase-date">~1.5 WEEKS</div>
+            </div>
+            <p class="phase-desc">Combine Next.js dashboard with n8n/Voice AI logic. Launch the platform MVP and onboard early local clients.</p>
+            <div class="skills">
+                <span class="skill-tag">Multi-tenant SaaS</span>
+                <span class="skill-tag">n8n Webhooks</span>
+                <span class="skill-tag">Stripe Billing</span>
+                <span class="skill-tag">Production Deploy</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="timeline-section">
+        <div class="timeline-header">PART 4: THE FALL TRANSITION (JULY 20 - NOV 22)</div>
+
+        <div class="phase">
+            <div class="phase-header">
+                <div class="phase-title">Phase 5: Python Foundation</div>
+                <div class="phase-date">~2 WEEKS</div>
+            </div>
+            <p class="phase-desc">4th Semester active. Shift to 15 hrs/week. Syntax mapping: Translate JS logic to Python OOP and Async/Await.</p>
+            <div class="skills">
+                <span class="skill-tag">Python Syntax</span>
+                <span class="skill-tag">OOP</span>
+                <span class="skill-tag">Async/Await</span>
+            </div>
+            <a href="https://www.youtube.com/playlist?list=PLGjplNEQ1it8-0CmoljS5yeV-GlKSUEt0" target="_blank" class="resource">▶ CampusX Python (Days 1-45)</a>
+        </div>
+
+        <div class="phase">
+            <div class="phase-header">
+                <div class="phase-title">Phase 6A: FastAPI</div>
+                <div class="phase-date">~1 WEEK</div>
+            </div>
+            <p class="phase-desc">Translate Express.js routing knowledge directly into Python's FastAPI.</p>
+            <div class="skills">
+                <span class="skill-tag">FastAPI</span>
+                <span class="skill-tag">Pydantic</span>
+                <span class="skill-tag">Docker</span>
+            </div>
+            <a href="https://www.youtube.com/playlist?list=PLKnIA16_RmvZ41tjbKB2ZnwchfniNsMuQ" target="_blank" class="resource">▶ CampusX FastAPI (13 videos)</a>
+        </div>
+
+        <div class="phase">
+            <div class="phase-header">
+                <div class="phase-title">Phase 6B: LangChain + RAG Systems</div>
+                <div class="phase-date">~4 WEEKS</div>
+            </div>
+            <p class="phase-desc">Build complex Retrieval-Augmented Generation pipelines mapping n8n node logic into pure Python code.</p>
+            <div class="skills">
+                <span class="skill-tag">LLM Prompts & Chains</span>
+                <span class="skill-tag">Vector Stores</span>
+                <span class="skill-tag">RAG Pipelines</span>
+            </div>
+            <a href="https://www.youtube.com/playlist?list=PLKnIA16_RmvaTbihpo4MtzVm4XOQa0ER0" target="_blank" class="resource">▶ CampusX LangChain (21 videos)</a>
+        </div>
+
+        <div class="phase">
+            <div class="phase-header">
+                <div class="phase-title">Phase 7A: LangGraph Agent Orchestration</div>
+                <div class="phase-date">~3 WEEKS</div>
+            </div>
+            <p class="phase-desc">Build stateful AI agents with graphs, nodes, and conditional edges.</p>
+            <div class="skills">
+                <span class="skill-tag">State Management</span>
+                <span class="skill-tag">Workflows</span>
+                <span class="skill-tag">Subgraphs</span>
+            </div>
+            <a href="https://www.youtube.com/playlist?list=PLKnIA16_RmvYsvB8qkUQuJmJNuiCUJFPL" target="_blank" class="resource">▶ CampusX LangGraph (28 videos)</a>
+        </div>
+
+        <div class="phase">
+            <div class="phase-header">
+                <div class="phase-title">Phase 7B: Agent Memory Systems</div>
+                <div class="phase-date">~3 DAYS</div>
+            </div>
+            <p class="phase-desc">Implement short-term and long-term memory for conversational agents.</p>
+            <div class="skills">
+                <span class="skill-tag">Short-term Memory</span>
+                <span class="skill-tag">Long-term Memory</span>
+                <span class="skill-tag">Context Windows</span>
+            </div>
+            <a href="https://www.youtube.com/playlist?list=PLKnIA16_RmvbtL3dyYE7s-GFna48trwfK" target="_blank" class="resource">▶ CampusX Memory (3 videos)</a>
+        </div>
+
+        <div class="phase">
+            <div class="phase-header">
+                <div class="phase-title">Phase 7C: Model Context Protocol (MCP)</div>
+                <div class="phase-date">~1.5 WEEKS</div>
+            </div>
+            <p class="phase-desc">Connect AI models with external tools and data using MCP.</p>
+            <div class="skills">
+                <span class="skill-tag">MCP Architecture</span>
+                <span class="skill-tag">MCP Servers/Clients</span>
+                <span class="skill-tag">Tool Integration</span>
+            </div>
+            <a href="https://www.youtube.com/playlist?list=PLKnIA16_Rmva_oZ9F4ayUu9qcWgF7Fyc0" target="_blank" class="resource">▶ CampusX MCP (8 videos)</a>
+        </div>
+
+        <div class="phase">
+            <div class="phase-header">
+                <div class="phase-title">Phase 7D: Agentic AI Mastery (The Baap of AI)</div>
+                <div class="phase-date">~2 WEEKS</div>
+            </div>
+            <p class="phase-desc">Master all agent frameworks through real-world projects. Fully replacing no-code with hardcore software engineering.</p>
+            <div class="skills">
+                <span class="skill-tag">OpenAI Agents SDK</span>
+                <span class="skill-tag">CrewAI</span>
+                <span class="skill-tag">AutoGen</span>
+            </div>
+            <a href="https://www.udemy.com/course/the-complete-agentic-ai-engineering-course/" target="_blank" class="resource">▶ Ed Donner Complete Agent Course</a>
+            <a href="https://youtu.be/O_ewDn_vVz8" target="_blank" class="resource">▶ CampusX CrewAI (Optional)</a>
+        </div>
+    </div>
+
+    <div class="timeline-section">
+        <div class="timeline-header">PART 5: WINTER UPGRADE (NOV 23 - JAN 31)</div>
+
+        <div class="phase blackout">
+            <div class="phase-header">
+                <div class="phase-title">⚠️ 4th Semester Exams</div>
+                <div class="phase-date">NOV 23 - DEC 24 (4 WKS)</div>
+            </div>
+            <p class="phase-desc">ZERO CODING. Academic lockdown.</p>
+        </div>
+
+        <div class="phase sprint">
+            <div class="phase-header">
+                <div class="phase-title">Phase 8: Voice Integration & SaaS V2</div>
+                <div class="phase-date">DEC 25 - JAN 31 (5 WKS)</div>
+            </div>
+            <p class="phase-desc">WINTER BREAK. 35 hrs/week. Add Deepgram/ElevenLabs integrations natively. Replace n8n with LangGraph. Launch SaaS V2.</p>
+            <div class="skills">
+                <span class="skill-tag">Deepgram (STT)</span>
+                <span class="skill-tag">ElevenLabs (TTS)</span>
+                <span class="skill-tag">Twilio (Calls)</span>
+                <span class="skill-tag">SaaS V2 LIVE 🚀</span>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>
+            <strong style="color: var(--accent);">TARGET: FEBRUARY 2027 REVENUE SCALING</strong><br>
+            THIS PLAN PROTECTS THE GPA AND BUILDS THE EMPIRE.<br>
+            <span style="color: var(--dim);">LOCKED & SECURED: MARCH 29, 2026</span>
+        </p>
+    </footer>
+
+</div>
+</body>
+</html>

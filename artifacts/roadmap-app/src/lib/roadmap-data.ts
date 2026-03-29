@@ -131,7 +131,7 @@ export const ROADMAP_PHASES: RoadmapPhase[] = [
     part: "PART 4: THE FALL TRANSITION",
     skills: ["Python Syntax", "OOP", "Async/Await", "Type Hints"],
     resources: [
-      { name: "Shradha Khapra – Python Full Course 2026 (9 lectures)", url: "https://www.youtube.com/@ApnaCollegeOfficial/playlists" },
+      { name: "CampusX – 100 Days of Machine Learning / Python (Days 1–45)", url: "https://www.youtube.com/playlist?list=PLGjplNEQ1it8-0CmoljS5yeV-GlKSUEt0" },
     ],
     episodes: [
       { id: "p5-ep1", title: "Lecture 1 – Variables & Data Types", phase: "phase-5" },
@@ -177,7 +177,7 @@ export const ROADMAP_PHASES: RoadmapPhase[] = [
     part: "PART 4: THE FALL TRANSITION",
     skills: ["LangChain", "ChromaDB", "RAG Pipelines", "Vector Stores", "Embeddings"],
     resources: [
-      { name: "CampusX – Generative AI using LangChain (21 videos)", url: "https://www.youtube.com/playlist?list=PLKnIA16_RmvbmzLl0Qjf6eRMC8YeKmL93" },
+      { name: "CampusX – Generative AI using LangChain (21 videos)", url: "https://www.youtube.com/playlist?list=PLKnIA16_RmvaTbihpo4MtzVm4XOQa0ER0" },
     ],
     episodes: [
       { id: "p6b-ep1", title: "GenAI Roadmap + Overview", phase: "phase-6b" },
@@ -209,7 +209,7 @@ export const ROADMAP_PHASES: RoadmapPhase[] = [
     part: "PART 4: THE FALL TRANSITION",
     skills: ["LangGraph", "State Management", "Workflows", "HITL", "LangSmith"],
     resources: [
-      { name: "CampusX – Agentic AI using LangGraph (28 videos)", url: "https://www.youtube.com/playlist?list=PLKnIA16_RmvbUFEB1k0lHZRkjt4fMWAgh" },
+      { name: "CampusX – Agentic AI using LangGraph (28 videos)", url: "https://www.youtube.com/playlist?list=PLKnIA16_RmvYsvB8qkUQuJmJNuiCUJFPL" },
     ],
     episodes: [
       { id: "p7-ep1", title: "Agentic AI vs GenAI (Intro)", phase: "phase-7" },
@@ -248,8 +248,8 @@ export const ROADMAP_PHASES: RoadmapPhase[] = [
     part: "PART 4: THE FALL TRANSITION",
     skills: ["mem0", "Memory Types", "Short-Term", "Long-Term", "Episodic", "Semantic", "Procedural"],
     resources: [
-      { name: "mem0 – Memory for AI Agents (Official Docs & Tutorials)", url: "https://docs.mem0.ai/overview" },
-      { name: "CampusX – Agentic Memory Playlist", url: "https://www.youtube.com/@campusx-official/playlists" },
+      { name: "CampusX – Agent Memory Systems (3 videos)", url: "https://www.youtube.com/playlist?list=PLKnIA16_RmvbtL3dyYE7s-GFna48trwfK" },
+      { name: "mem0 – Memory for AI Agents (Official Docs)", url: "https://docs.mem0.ai/overview" },
     ],
     episodes: [
       { id: "p7b-ep1", title: "Why Agents Need Memory", phase: "phase-7b" },
@@ -271,7 +271,7 @@ export const ROADMAP_PHASES: RoadmapPhase[] = [
     part: "PART 4: THE FALL TRANSITION",
     skills: ["MCP", "MCP Servers", "MCP Clients", "Claude Desktop"],
     resources: [
-      { name: "CampusX – Model Context Protocol (8 videos)", url: "https://www.youtube.com/playlist?list=PLKnIA16_RmvbGKoT7j2m0bHGnSgQNmQ3X" },
+      { name: "CampusX – Model Context Protocol (8 videos)", url: "https://www.youtube.com/playlist?list=PLKnIA16_Rmva_oZ9F4ayUu9qcWgF7Fyc0" },
     ],
     episodes: [
       { id: "p8-ep1", title: "MCP Intro: What is MCP?", phase: "phase-8" },
@@ -291,7 +291,8 @@ export const ROADMAP_PHASES: RoadmapPhase[] = [
     part: "PART 4: THE FALL TRANSITION",
     skills: ["CrewAI", "LangGraph", "AutoGen", "OpenAI Agents SDK", "MCP", "Agent Teams"],
     resources: [
-      { name: "EdDonner – Complete Agents Course (130 lectures, 17h)", url: "https://www.udemy.com/course/multi-ai-agent-systems/" },
+      { name: "EdDonner – Complete Agentic AI Engineering Course", url: "https://www.udemy.com/course/the-complete-agentic-ai-engineering-course/" },
+      { name: "CampusX – CrewAI (Optional Bonus)", url: "https://youtu.be/O_ewDn_vVz8" },
     ],
     episodes: [
       { id: "p9-w1d1", title: "W1D1 – Autonomous AI Demo + Framework Overview", phase: "phase-9" },

@@ -153,7 +153,7 @@ Max 4 tasks. Be honest if they've been slacking.`;
     // ─── n8n webhook → Gmail notification ─────────────────────────────────
     const today = new Date().toLocaleDateString("en-PK", { weekday: "long", month: "short", day: "numeric" });
     await callN8nWebhook({
-      subject: `[SYSTEM.INIT] Your Schedule — ${today}`,
+      subject: `[Salman's System] Your Schedule — ${today}`,
       message: `TASKS FOR TODAY:\n${taskList.map((t, i) => `${i + 1}. ${t}`).join("\n")}\n\nPOMODORO: ${pomodoroRecommendation}\n\nMOTIVATION: ${motivation}`,
       tasks: taskList,
       pomodoro: pomodoroRecommendation,
@@ -254,7 +254,7 @@ Keep it under 150 words. Be honest if they underperformed.`;
         streak: profile?.currentStreak || 0,
         currentPhase: profile?.currentPhase || "Phase 1",
       });
-      const subject = `[SYSTEM.INIT] Weekly Report — ${new Date().toLocaleDateString("en-PK", { month: "short", day: "numeric" })}`;
+      const subject = `[Salman's System] Weekly Report — ${new Date().toLocaleDateString("en-PK", { month: "short", day: "numeric" })}`;
       fetch(weeklyWebhookUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
