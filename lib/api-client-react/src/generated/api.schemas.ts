@@ -99,6 +99,10 @@ export interface GenerateScheduleBody {
   tasks: string;
   availableHours: number;
   currentPhase: string;
+  yesterdayWork?: string;
+  officeHours?: string;
+  uniHours?: string;
+  commitments?: string;
 }
 
 export interface AIScheduleResponse {

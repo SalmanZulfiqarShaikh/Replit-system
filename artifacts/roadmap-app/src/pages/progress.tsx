@@ -92,8 +92,8 @@ export default function Progress() {
                       onClick={() => handleToggle(ep.id, ep.title, phase.id, isDone)}
                       className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer transition-all ${
                         isDone 
-                          ? 'bg-primary/10 border-primary/30 text-white shadow-[inset_0_0_10px_rgba(29,185,84,0.1)]' 
-                          : 'bg-secondary/50 border-border hover:border-primary/50 text-muted-foreground hover:text-foreground'
+                          ? 'bg-white/5 border-white/20 text-white' 
+                          : 'bg-secondary/50 border-border hover:border-white/20 text-muted-foreground hover:text-foreground'
                       }`}
                     >
                       {isDone ? (

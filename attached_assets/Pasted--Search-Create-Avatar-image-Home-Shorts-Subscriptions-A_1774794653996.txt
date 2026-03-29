@@ -1,0 +1,143 @@
+
+Search
+
+
+
+Create
+
+
+Avatar image
+Home
+Shorts
+Subscriptions
+
+Abu Bakar Automation
+
+AI Foundations
+
+AI Learners India
+
+Akshay Saini
+
+Alex Hormozi
+
+Alyy Hash
+
+Arrlifts
+Show more
+You
+History
+Playlists
+Watch Later
+Liked videos
+Your videos
+Downloads
+Show more
+Explore
+Music
+Gaming
+News
+Show more
+More from YouTube
+YouTube Premium
+YouTube Music
+YouTube Kids
+Report history
+AboutPressCopyrightContact usCreatorAdvertiseDevelopers
+TermsPrivacyPolicy & SafetyHow YouTube worksTest new features
+© 2026 Google LLC
+
+
+Play all
+FastAPI for Machine Learning | CampusX
+CampusX · 
+Course
+13 videos Last updated on 3 Nov 2025
+
+
+
+
+Resume
+
+Comments
+This playlist shows you how to use FastAPI to deploy machine learning models as powerful, production-ready APIs.
+
+Playlist Resources: https://learnwith.campusx.in/products#nav_bar
+Advanced Course: https://learnwith.campusx.in/courses/FastAPI-6873cb2075f40c2715c809fe
+1
+true
+46:37
+Now playing
+What is an API? | Introduction to APIs | FAST API for Machine Learning | CampusX
+
+2
+true
+42:07
+Now playing
+FastAPI Philosophy | How to setup FastAPI | Installation and Code Demo | Video 2 | CampusX
+
+3
+true
+27:01
+Now playing
+HTTP Methods in FastAPI | Video 3 | CampusX
+
+4
+true
+41:12
+Now playing
+Path & Query Params in FastAPI | Video 4 | CampusX
+
+5
+true
+1:25:31
+Now playing
+Pydantic Crash Course | Data Validation in Python | CampusX
+
+6
+true
+35:42
+Now playing
+Post Request in FastAPI | What is Request Body? | Video 5 | CampusX
+
+7
+true
+31:11
+Now playing
+PUT & DELETE in FastAPI | Video 6 | CampusX
+
+8
+true
+46:37
+Now playing
+Serving ML Models with FastAPI | Video 7 | CampusX
+
+9
+true
+40:35
+Now playing
+Improving the FastAPI API | Video 8 | CampusX
+
+10
+true
+1:26:45
+Now playing
+Docker for Machine Learning | Docker Crash Course | CampusX
+
+11
+true
+19:22
+Now playing
+FastAPI + Docker Tutorial for Beginners | How to Dockerize a FastAPI API Application | CampusX
+
+12
+true
+18:58
+Now playing
+How to Deploy a FastAPI API on AWS | Video 10 | CampusX
+
+13
+true
+12:22
+Now playing
+FastAPI Course Launch

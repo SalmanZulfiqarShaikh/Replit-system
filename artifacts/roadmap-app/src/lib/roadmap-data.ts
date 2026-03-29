@@ -2,14 +2,21 @@ export interface RoadmapEpisode {
   id: string;
   title: string;
   phase: string;
+  url?: string;
+}
+
+export interface RoadmapResource {
+  name: string;
+  url: string;
 }
 
 export interface RoadmapPhase {
   id: string;
   title: string;
   duration: string;
+  part: string;
   skills: string[];
-  resources: { name: string; url: string }[];
+  resources: RoadmapResource[];
   episodes: RoadmapEpisode[];
   isBlackout?: boolean;
 }
@@ -17,120 +24,297 @@ export interface RoadmapPhase {
 export const ROADMAP_PHASES: RoadmapPhase[] = [
   {
     id: "phase-1",
-    title: "Backend + Voice AI Foundations",
-    duration: "~6.5 weeks (Mar 29 - May 13)",
+    title: "Phase 1: Backend + Voice AI Foundations",
+    duration: "~6.5 weeks (Mar 29 – May 13)",
+    part: "PART 1: THE PRE-EXAM GRIND",
     skills: ["Node.js", "Express", "MongoDB", "JWT", "WebSockets", "Voice AI Agents"],
     resources: [
-      { name: "Piyush Episodes 23-41", url: "https://youtube.com/playlist?list=PLinedj3B30sDby4Al-i13hQJGQoRQDfPo" },
-      { name: "Udemy Voice AI Course", url: "https://www.udemy.com/course/master-ai-voice-agents-automate-calls-with-ai-and-no-code/" }
+      { name: "Piyush Garg – Master NodeJS (Eps 23–41)", url: "https://youtube.com/playlist?list=PLinedj3B30sDby4Al-i13hQJGQoRQDfPo" },
+      { name: "Udemy – Master AI Voice Agents", url: "https://www.udemy.com/course/master-ai-voice-agents-automate-calls-with-ai-and-no-code/" },
     ],
-    episodes: Array.from({ length: 19 }, (_, i) => ({
-      id: `ep-${i + 23}`,
-      title: `Episode ${i + 23}`,
-      phase: "phase-1"
-    }))
+    episodes: [
+      { id: "p1-ep23", title: "Ep 23 – Node.js Auth from Scratch", phase: "phase-1", url: "https://youtube.com/playlist?list=PLinedj3B30sDby4Al-i13hQJGQoRQDfPo" },
+      { id: "p1-ep24", title: "Ep 24 – JWT Authentication", phase: "phase-1" },
+      { id: "p1-ep25", title: "Ep 25 – Cookies in NodeJS", phase: "phase-1" },
+      { id: "p1-ep26", title: "Ep 26 – Authorization in NodeJS", phase: "phase-1" },
+      { id: "p1-ep27", title: "Ep 27 – Discord Bot in NodeJS", phase: "phase-1" },
+      { id: "p1-ep28", title: "Ep 28 – File Uploads with Multer", phase: "phase-1" },
+      { id: "p1-ep29", title: "Ep 29 – Blog App Setup", phase: "phase-1" },
+      { id: "p1-ep30", title: "Ep 30 – Blog App Authentication", phase: "phase-1" },
+      { id: "p1-ep31", title: "Ep 31 – Complete Blog App (Node + MongoDB + EJS)", phase: "phase-1" },
+      { id: "p1-ep32", title: "Ep 32 – Deploy NodeJS on AWS", phase: "phase-1" },
+      { id: "p1-ep33", title: "Ep 33 – WebSocket / Socket.IO", phase: "phase-1" },
+      { id: "p1-ep34", title: "Ep 34 – NodeJS Streams", phase: "phase-1" },
+      { id: "p1-ep35", title: "Ep 35 – Scaling with Cluster Module", phase: "phase-1" },
+      { id: "p1-ep36", title: "Ep 36 – What is Nginx?", phase: "phase-1" },
+      { id: "p1-ep37", title: "Ep 37 – Install & Setup Nginx", phase: "phase-1" },
+      { id: "p1-ep38", title: "Ep 38 – Static Content with Nginx", phase: "phase-1" },
+      { id: "p1-ep39", title: "Ep 39 – NGINX + SSL Deployment", phase: "phase-1" },
+      { id: "p1-ep40", title: "Ep 40 – Serverless Framework with NodeJS", phase: "phase-1" },
+      { id: "p1-ep41", title: "Ep 41 – Serverless vs Monolith / AWS Lambda", phase: "phase-1" },
+      { id: "p1-voice1", title: "Voice AI – Getting Started + Tools", phase: "phase-1", url: "https://www.udemy.com/course/master-ai-voice-agents-automate-calls-with-ai-and-no-code/" },
+      { id: "p1-voice2", title: "Voice AI – Building First AI Voice Agent", phase: "phase-1" },
+      { id: "p1-voice3", title: "Voice AI – Prompting + Knowledge Bases", phase: "phase-1" },
+      { id: "p1-voice4", title: "Voice AI – Inbound vs Outbound Calls", phase: "phase-1" },
+      { id: "p1-voice5", title: "Voice AI – Appointment Agent from Scratch", phase: "phase-1" },
+      { id: "p1-voice6", title: "Voice AI – n8n Integration + Automation", phase: "phase-1" },
+      { id: "p1-voice7", title: "Voice AI – Multi-State + Multi-Prompt Agents", phase: "phase-1" },
+      { id: "p1-voice8", title: "Voice AI – Agency Launch + Pricing Strategy", phase: "phase-1" },
+    ],
   },
   {
     id: "phase-blackout",
-    title: "BLACKOUT: 3rd Semester Exams",
-    duration: "May 14 - Jun 19",
-    skills: ["ZERO CODING"],
+    title: "⚠️ BLACKOUT: 3rd Semester Exams",
+    duration: "5 weeks (May 14 – Jun 19)",
+    part: "PART 2: THE BLACKOUT",
+    skills: ["DSA", "COAL", "Multivariable Calculus"],
     resources: [],
     episodes: [],
-    isBlackout: true
+    isBlackout: true,
   },
   {
     id: "phase-2",
-    title: "Next.js + Postgres Basics",
+    title: "Phase 2: Next.js + Postgres Basics",
     duration: "~1.5 weeks (Jun 20)",
-    skills: ["Next.js 15", "Server Actions", "PostgreSQL", "Prisma"],
+    part: "PART 3: THE SUMMER SPRINT",
+    skills: ["Next.js 15", "App Router", "Server Actions", "PostgreSQL", "Prisma ORM"],
     resources: [],
     episodes: [
-      { id: "ep-next-1", title: "Next.js Routing & Actions", phase: "phase-2" },
-      { id: "ep-next-2", title: "Postgres Setup & Prisma", phase: "phase-2" }
-    ]
+      { id: "p2-ep1", title: "Next.js 15 App Router + File Structure", phase: "phase-2" },
+      { id: "p2-ep2", title: "Server Actions + Data Fetching", phase: "phase-2" },
+      { id: "p2-ep3", title: "PostgreSQL Setup + Prisma ORM", phase: "phase-2" },
+      { id: "p2-ep4", title: "Authentication + Protected Routes", phase: "phase-2" },
+      { id: "p2-ep5", title: "Deployment to Vercel", phase: "phase-2" },
+    ],
   },
   {
     id: "phase-3",
-    title: "Hyper-Vibe Coding",
+    title: "Phase 3: Hyper-Vibe Coding",
     duration: "~1 week",
-    skills: ["Cursor AI", "Claude Code", "Supabase", "Stripe"],
+    part: "PART 3: THE SUMMER SPRINT",
+    skills: ["Antigravity", "Gemini 3.1", "Claude Code", "skills.md", "Supabase", "Stripe"],
     resources: [
-      { name: "Vibe Coding Course", url: "https://youtu.be/gcuR_-rzlDw" }
+      { name: "Nick Saraev – Vibe Coding Full Course (6hrs)", url: "https://youtu.be/gcuR_-rzlDw" },
+      { name: "Nate Herk – Build & Sell with Claude Code (10hrs)", url: "https://youtu.be/mpALXah_PBg?si=IrZGpcsIcilmmdCY" },
     ],
     episodes: [
-      { id: "ep-vibe-1", title: "Vibe Coding Masterclass", phase: "phase-3" }
-    ]
+      { id: "p3-ep1", title: "Antigravity Setup + Interface Navigation", phase: "phase-3", url: "https://youtu.be/gcuR_-rzlDw" },
+      { id: "p3-ep2", title: "Building a Portfolio Site with AI", phase: "phase-3" },
+      { id: "p3-ep3", title: "Vibe Coding Design Loop", phase: "phase-3" },
+      { id: "p3-ep4", title: "Full-Stack App with Supabase + Stripe", phase: "phase-3" },
+      { id: "p3-ep5", title: "Deploying to Netlify / Production", phase: "phase-3" },
+      { id: "p3-ep6", title: "Claude Code – Setup + claude.md", phase: "phase-3", url: "https://youtu.be/mpALXah_PBg?si=IrZGpcsIcilmmdCY" },
+      { id: "p3-ep7", title: "Claude Code – Building Workflows + RAG", phase: "phase-3" },
+      { id: "p3-ep8", title: "Claude Code – Sub-agents + Agent Teams", phase: "phase-3" },
+      { id: "p3-ep9", title: "Claude Code – Browser Automation + MCPs", phase: "phase-3" },
+    ],
   },
   {
     id: "phase-4",
-    title: "SHIP THE STARTUP",
+    title: "Phase 4: SHIP THE STARTUP 🚀",
     duration: "~1.5 weeks",
+    part: "PART 3: THE SUMMER SPRINT",
     skills: ["Multi-tenant SaaS", "n8n Webhooks", "Stripe Billing", "Production Deploy"],
     resources: [],
     episodes: [
-      { id: "ep-ship-1", title: "SaaS Architecture", phase: "phase-4" },
-      { id: "ep-ship-2", title: "Billing Integration", phase: "phase-4" },
-      { id: "ep-ship-3", title: "Launch Day", phase: "phase-4" }
-    ]
+      { id: "p4-ep1", title: "Multi-tenant SaaS Architecture", phase: "phase-4" },
+      { id: "p4-ep2", title: "n8n + Voice AI Webhook Integration", phase: "phase-4" },
+      { id: "p4-ep3", title: "Stripe Billing + Subscription Plans", phase: "phase-4" },
+      { id: "p4-ep4", title: "Onboard First Local Client", phase: "phase-4" },
+      { id: "p4-ep5", title: "Production Deploy + Monitoring", phase: "phase-4" },
+    ],
   },
   {
     id: "phase-5",
-    title: "Python Foundation",
+    title: "Phase 5: Python Foundation",
     duration: "~2 weeks (Jul 20)",
-    skills: ["Python Syntax", "OOP", "Async/Await"],
+    part: "PART 4: THE FALL TRANSITION",
+    skills: ["Python Syntax", "OOP", "Async/Await", "Type Hints"],
     resources: [
-      { name: "CampusX Python Days 1-45", url: "https://www.youtube.com/playlist?list=PLGjplNEQ1it8-0CmoljS5yeV-GlKSUEt0" }
+      { name: "Shradha Khapra – Python Full Course 2026 (9 lectures)", url: "https://www.youtube.com/@ApnaCollegeOfficial" },
     ],
-    episodes: Array.from({ length: 15 }, (_, i) => ({
-      id: `ep-py-${i + 1}`,
-      title: `Python Day ${(i * 3) + 1}-${(i * 3) + 3}`,
-      phase: "phase-5"
-    }))
+    episodes: [
+      { id: "p5-ep1", title: "Lecture 1 – Variables & Data Types", phase: "phase-5" },
+      { id: "p5-ep2", title: "Lecture 2 – Strings & Conditional Statements", phase: "phase-5" },
+      { id: "p5-ep3", title: "Lecture 3 – List & Tuple", phase: "phase-5" },
+      { id: "p5-ep4", title: "Lecture 4 – Dictionary & Set", phase: "phase-5" },
+      { id: "p5-ep5", title: "Lecture 5 – Loops (While & For)", phase: "phase-5" },
+      { id: "p5-ep6", title: "Lecture 6 – Functions & Recursion", phase: "phase-5" },
+      { id: "p5-ep7", title: "Lecture 7 – File Input/Output", phase: "phase-5" },
+      { id: "p5-ep8", title: "Lecture 8 – OOP Part 1 (Classes & Objects)", phase: "phase-5" },
+      { id: "p5-ep9", title: "Lecture 9 – OOP Part 2", phase: "phase-5" },
+    ],
   },
   {
     id: "phase-6a",
-    title: "FastAPI",
+    title: "Phase 6A: FastAPI",
     duration: "~1 week",
-    skills: ["FastAPI", "Pydantic", "Docker"],
+    part: "PART 4: THE FALL TRANSITION",
+    skills: ["FastAPI", "Pydantic", "Docker", "AWS Deployment"],
     resources: [
-      { name: "CampusX FastAPI", url: "https://www.youtube.com/playlist?list=PLKnIA16_RmvZ41tjbKB2ZnwchfniNsMuQ" }
+      { name: "CampusX – FastAPI for ML (13 videos)", url: "https://www.youtube.com/playlist?list=PLKnIA16_RmvZ41tjbKB2ZnwchfniNsMuQ" },
     ],
     episodes: [
-      { id: "ep-fast-1", title: "FastAPI Basics", phase: "phase-6a" },
-      { id: "ep-fast-2", title: "Advanced FastAPI", phase: "phase-6a" }
-    ]
+      { id: "p6a-ep1", title: "What is an API? Introduction", phase: "phase-6a", url: "https://www.youtube.com/playlist?list=PLKnIA16_RmvZ41tjbKB2ZnwchfniNsMuQ" },
+      { id: "p6a-ep2", title: "FastAPI Philosophy & Setup", phase: "phase-6a" },
+      { id: "p6a-ep3", title: "HTTP Methods in FastAPI", phase: "phase-6a" },
+      { id: "p6a-ep4", title: "Path & Query Params", phase: "phase-6a" },
+      { id: "p6a-ep5", title: "Pydantic Crash Course (Data Validation)", phase: "phase-6a" },
+      { id: "p6a-ep6", title: "POST Request + Request Body", phase: "phase-6a" },
+      { id: "p6a-ep7", title: "PUT & DELETE in FastAPI", phase: "phase-6a" },
+      { id: "p6a-ep8", title: "Serving ML Models with FastAPI", phase: "phase-6a" },
+      { id: "p6a-ep9", title: "Improving the FastAPI API", phase: "phase-6a" },
+      { id: "p6a-ep10", title: "Docker for Machine Learning", phase: "phase-6a" },
+      { id: "p6a-ep11", title: "FastAPI + Docker", phase: "phase-6a" },
+      { id: "p6a-ep12", title: "Deploy FastAPI on AWS", phase: "phase-6a" },
+      { id: "p6a-ep13", title: "FastAPI Course Wrap-Up", phase: "phase-6a" },
+    ],
   },
   {
     id: "phase-6b",
-    title: "LangChain + RAG Systems",
+    title: "Phase 6B: LangChain + RAG Systems",
     duration: "~4 weeks",
-    skills: ["LangChain", "ChromaDB", "RAG Pipelines"],
-    resources: [],
+    part: "PART 4: THE FALL TRANSITION",
+    skills: ["LangChain", "ChromaDB", "RAG Pipelines", "Vector Stores", "Embeddings"],
+    resources: [
+      { name: "CampusX – Generative AI using LangChain (21 videos)", url: "https://www.youtube.com/@campusx-official" },
+    ],
     episodes: [
-      { id: "ep-rag-1", title: "Vector DBs Intro", phase: "phase-6b" },
-      { id: "ep-rag-2", title: "Building RAG", phase: "phase-6b" },
-      { id: "ep-rag-3", title: "Advanced Retrieval", phase: "phase-6b" }
-    ]
+      { id: "p6b-ep1", title: "GenAI Roadmap + Overview", phase: "phase-6b" },
+      { id: "p6b-ep2", title: "Intro to LangChain", phase: "phase-6b" },
+      { id: "p6b-ep3", title: "LangChain Components", phase: "phase-6b" },
+      { id: "p6b-ep4", title: "LangChain Models (Deep Dive)", phase: "phase-6b" },
+      { id: "p6b-ep5", title: "Prompts in LangChain", phase: "phase-6b" },
+      { id: "p6b-ep6", title: "Structured Output in LangChain", phase: "phase-6b" },
+      { id: "p6b-ep7", title: "Output Parsers", phase: "phase-6b" },
+      { id: "p6b-ep8", title: "Chains in LangChain", phase: "phase-6b" },
+      { id: "p6b-ep9", title: "Runnables Part 1", phase: "phase-6b" },
+      { id: "p6b-ep10", title: "Runnables Part 2", phase: "phase-6b" },
+      { id: "p6b-ep11", title: "Document Loaders", phase: "phase-6b" },
+      { id: "p6b-ep12", title: "Text Splitters", phase: "phase-6b" },
+      { id: "p6b-ep13", title: "Vector Stores", phase: "phase-6b" },
+      { id: "p6b-ep14", title: "Retrievers", phase: "phase-6b" },
+      { id: "p6b-ep15", title: "RAG Explained (Deep Dive)", phase: "phase-6b" },
+      { id: "p6b-ep16", title: "YouTube Chatbot using RAG", phase: "phase-6b" },
+      { id: "p6b-ep17", title: "Tools in LangChain", phase: "phase-6b" },
+      { id: "p6b-ep18", title: "Tool Calling in LangChain", phase: "phase-6b" },
+      { id: "p6b-ep19", title: "End-to-End AI Agent in LangChain", phase: "phase-6b" },
+      { id: "p6b-ep20", title: "Ollama Masterclass 2026", phase: "phase-6b" },
+    ],
   },
   {
     id: "phase-7",
-    title: "Agentic AI",
+    title: "Phase 7: Agentic AI (LangGraph)",
     duration: "~4 weeks",
-    skills: ["LangGraph", "AutoGen", "CrewAI"],
+    part: "PART 4: THE FALL TRANSITION",
+    skills: ["LangGraph", "State Management", "Workflows", "HITL", "LangSmith"],
+    resources: [
+      { name: "CampusX – Agentic AI using LangGraph (28 videos)", url: "https://www.youtube.com/@campusx-official" },
+    ],
+    episodes: [
+      { id: "p7-ep1", title: "Agentic AI vs GenAI (Intro)", phase: "phase-7" },
+      { id: "p7-ep2", title: "What is Agentic AI?", phase: "phase-7" },
+      { id: "p7-ep3", title: "LangChain vs LangGraph", phase: "phase-7" },
+      { id: "p7-ep4", title: "LangGraph Core Concepts", phase: "phase-7" },
+      { id: "p7-ep5", title: "Sequential Workflows", phase: "phase-7" },
+      { id: "p7-ep6", title: "Parallel Workflows", phase: "phase-7" },
+      { id: "p7-ep7", title: "Conditional Workflows", phase: "phase-7" },
+      { id: "p7-ep8", title: "Iterative Workflows", phase: "phase-7" },
+      { id: "p7-ep9", title: "Chatbot with LangGraph", phase: "phase-7" },
+      { id: "p7-ep10", title: "Persistence + Time Travel", phase: "phase-7" },
+      { id: "p7-ep11", title: "Chatbot UI with Streamlit", phase: "phase-7" },
+      { id: "p7-ep12", title: "Streaming in LangGraph", phase: "phase-7" },
+      { id: "p7-ep13", title: "Resume Chat Feature (like ChatGPT)", phase: "phase-7" },
+      { id: "p7-ep14", title: "LangGraph + SQLite Database", phase: "phase-7" },
+      { id: "p7-ep15", title: "LangSmith Crash Course", phase: "phase-7" },
+      { id: "p7-ep16", title: "Observability in LangGraph", phase: "phase-7" },
+      { id: "p7-ep17", title: "Tools in LangGraph", phase: "phase-7" },
+      { id: "p7-ep18", title: "MCP Client using LangGraph", phase: "phase-7" },
+      { id: "p7-ep19", title: "RAG using LangGraph", phase: "phase-7" },
+      { id: "p7-ep20", title: "Human in the Loop (HITL)", phase: "phase-7" },
+      { id: "p7-ep21", title: "Subgraphs in LangGraph", phase: "phase-7" },
+      { id: "p7-ep22", title: "LLMs Don't Have Memory – How They Remember", phase: "phase-7" },
+      { id: "p7-ep23", title: "Short Term Memory with LangGraph", phase: "phase-7" },
+      { id: "p7-ep24", title: "Long Term Memory in LangGraph", phase: "phase-7" },
+      { id: "p7-ep25", title: "AI Agent: Blog Writer (Full Project)", phase: "phase-7" },
+      { id: "p7-ep26", title: "Corrective RAG (CRAG)", phase: "phase-7" },
+      { id: "p7-ep27", title: "Self-RAG: AI Fact-Checks Itself", phase: "phase-7" },
+    ],
+  },
+  {
+    id: "phase-8",
+    title: "Phase 8: MCP (Model Context Protocol)",
+    duration: "~1 week",
+    part: "PART 4: THE FALL TRANSITION",
+    skills: ["MCP", "MCP Servers", "MCP Clients", "Claude Desktop"],
+    resources: [
+      { name: "CampusX – Model Context Protocol (8 videos)", url: "https://www.youtube.com/@campusx-official" },
+    ],
+    episodes: [
+      { id: "p8-ep1", title: "MCP Intro: What is MCP?", phase: "phase-8" },
+      { id: "p8-ep2", title: "MCP: The Why", phase: "phase-8" },
+      { id: "p8-ep3", title: "MCP Architecture", phase: "phase-8" },
+      { id: "p8-ep4", title: "The MCP Lifecycle", phase: "phase-8" },
+      { id: "p8-ep5", title: "Connecting MCP Servers to Claude Desktop", phase: "phase-8" },
+      { id: "p8-ep6", title: "Build Local MCP Servers", phase: "phase-8" },
+      { id: "p8-ep7", title: "Build & Deploy Remote MCP Servers", phase: "phase-8" },
+      { id: "p8-ep8", title: "Build MCP Clients", phase: "phase-8" },
+    ],
+  },
+  {
+    id: "phase-9",
+    title: "Phase 9: EdDonner – Multi-Agent Mastery",
+    duration: "~6 weeks",
+    part: "PART 4: THE FALL TRANSITION",
+    skills: ["CrewAI", "LangGraph", "AutoGen", "OpenAI Agents SDK", "MCP", "Agent Teams"],
+    resources: [
+      { name: "EdDonner – Complete Agents Course (130 lectures, 17h)", url: "https://www.udemy.com" },
+    ],
+    episodes: [
+      { id: "p9-w1d1", title: "W1D1 – Autonomous AI Demo + Framework Overview", phase: "phase-9" },
+      { id: "p9-w1d2", title: "W1D2 – LLM Workflow Design Patterns", phase: "phase-9" },
+      { id: "p9-w1d3", title: "W1D3 – Multi-LLM Orchestration (GPT/Claude/Gemini)", phase: "phase-9" },
+      { id: "p9-w1d4", title: "W1D4 – Resources vs Tools + Gradio UI", phase: "phase-9" },
+      { id: "p9-w1d5", title: "W1D5 – Career Alter Ego Agent + Deploy", phase: "phase-9" },
+      { id: "p9-w2d1", title: "W2D1 – OpenAI Agents SDK: Async + Core Concepts", phase: "phase-9" },
+      { id: "p9-w2d2", title: "W2D2 – AI Sales Agents + Concurrent Execution", phase: "phase-9" },
+      { id: "p9-w2d3", title: "W2D3 – Multi-Model + Guardrails + Safety", phase: "phase-9" },
+      { id: "p9-w2d4", title: "W2D4 – Deep Research Agents with Web Search", phase: "phase-9" },
+      { id: "p9-w2d5", title: "W2D5 – Modular Research System with Gradio", phase: "phase-9" },
+      { id: "p9-w3d1", title: "W3D1 – CrewAI Framework + Debate System", phase: "phase-9" },
+      { id: "p9-w3d2", title: "W3D2 – CrewAI Tools + Financial Research", phase: "phase-9" },
+      { id: "p9-w3d3", title: "W3D3 – Stock Picker Agent + Pydantic Outputs", phase: "phase-9" },
+      { id: "p9-w3d4", title: "W3D4 – CrewAI Memory + Python Coding Agents", phase: "phase-9" },
+      { id: "p9-w3d5", title: "W3D5 – AI Trading Framework (Full Project)", phase: "phase-9" },
+      { id: "p9-w4d1", title: "W4D1 – LangGraph Architecture + Studio", phase: "phase-9" },
+      { id: "p9-w4d2", title: "W4D2 – State Management + Reducers", phase: "phase-9" },
+      { id: "p9-w4d3", title: "W4D3 – Tools + Checkpointing + LangSmith", phase: "phase-9" },
+      { id: "p9-w4d4", title: "W4D4 – Playwright Web Browsing Agents", phase: "phase-9" },
+      { id: "p9-w4d5", title: "W4D5 – AI Sidekick (Full Featured Agent)", phase: "phase-9" },
+      { id: "p9-w5d1", title: "W5D1 – AutoGen Framework Intro", phase: "phase-9" },
+      { id: "p9-w5d2", title: "W5D2 – Advanced AutoGen + Multimodal", phase: "phase-9" },
+      { id: "p9-w5d3", title: "W5D3 – AutoGen Core Architecture + Messages", phase: "phase-9" },
+      { id: "p9-w5d4", title: "W5D4 – Distributed Agents with gRPC", phase: "phase-9" },
+      { id: "p9-w5d5", title: "W5D5 – Self-Deploying Autonomous Agents", phase: "phase-9" },
+      { id: "p9-w6d1", title: "W6D1 – MCP Deep Dive + Security", phase: "phase-9" },
+      { id: "p9-w6d2", title: "W6D2 – Build Your Own MCP Server", phase: "phase-9" },
+      { id: "p9-w6d3", title: "W6D3 – MCP Memory + Market Data APIs", phase: "phase-9" },
+      { id: "p9-w6d4", title: "W6D4 – Agent Trading Floor (4 Agents)", phase: "phase-9" },
+      { id: "p9-w6d5", title: "W6D5 – Which Framework? Course Recap", phase: "phase-9" },
+    ],
+  },
+  {
+    id: "phase-10",
+    title: "Phase 10: Upgrade the SaaS to Python",
+    duration: "~2 weeks (Winter Break)",
+    part: "PART 5: THE UPGRADE",
+    skills: ["Python SaaS", "Agentic Backend", "Production AI", "MRR Growth"],
     resources: [],
     episodes: [
-      { id: "ep-agent-1", title: "Agent Concepts", phase: "phase-7" },
-      { id: "ep-agent-2", title: "Multi-Agent Systems", phase: "phase-7" },
-      { id: "ep-agent-3", title: "Real-world Agents", phase: "phase-7" }
-    ]
-  }
-];
-
-export const LEADERBOARD = [
-  { rank: 1, name: "Ahmad K.", hours: 47, isUser: false },
-  { rank: 2, name: "You", hours: 0, isUser: true }, // Hours will be dynamically updated
-  { rank: 3, name: "Raza M.", hours: 31, isUser: false },
-  { rank: 4, name: "Sara J.", hours: 28, isUser: false },
-  { rank: 5, name: "Ali B.", hours: 19, isUser: false },
+      { id: "p10-ep1", title: "Architecture Planning: JS → Python Migration", phase: "phase-10" },
+      { id: "p10-ep2", title: "FastAPI Backend Rewrite", phase: "phase-10" },
+      { id: "p10-ep3", title: "LangGraph Agent Integration", phase: "phase-10" },
+      { id: "p10-ep4", title: "Production Deploy + Client Migration", phase: "phase-10" },
+    ],
+  },
 ];

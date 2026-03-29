@@ -1,0 +1,66 @@
+uild & Sell with Claude Code (10+ Hour Course)
+
+Nate Herk | AI Automation
+609k subscribers
+
+
+13k
+
+
+Share
+
+Save
+
+301,055 views  12 Mar 2026
+Full courses + unlimited support: https://www.skool.com/ai-automation-s...
+All my FREE resources: https://www.skool.com/ai-automation-s...
+Apply for my YT podcast: https://podcast.nateherk.com/apply
+Work with me: https://uppitai.com/
+
+My Tools💻
+14 day FREE n8n trial: https://n8n.partnerlinks.io/22crlu8afq5r
+Code NATEHERK to Self-Host Claude Code for 10% off (annual plan): https://hostinger.com/herknate10
+Voice to text: https://ref.wisprflow.ai/nateherk
+1000 Free credits and 10% off Firecrawl: https://www.firecrawl.dev/partners/nate
+Get 30% off Blotato for 6 months: https://blotato.com/?ref=nate
+
+This is the complete Claude Code course. Trust me, save this for later. 
+
+I start from zero and walk you through everything: setup, building workflows, deploying websites, creating agent teams, browser automation, finding clients, pricing your work, and way more. To make it even better, we don’t ever write a single line of code. 
+
+By the end, you'll know how to use Claude Code at a professional level and how to actually turn those skills into income. Whether you've never opened a terminal or you're looking to go deeper, this course covers it all in one place.
+
+Sponsorship Inquiries:
+📧 sponsorships@nateherk.com
+
+TIMESTAMPS 
+00:00 Course Outline
+01:14 Why Learn This
+26:08 Getting Set Up
+41:25 Operations
+50:53 Tokens and Context Windows
+55:10 Claude.md
+58:57 Building Your First Workflow
+1:25:05 Building Second Workflow
+1:50:43 Deploying Automations
+3:05:46 Project Architecture & Commands
+3:17:39 RAG
+3:32:59 Turning n8n Workflow into App
+4:12:42 Website Building Hacks
+4:40:07 3D Animated Websites
+5:00:02 APIs and MCPs
+5:28:16 Google CLI
+5:39:42 Building Your Own Executive Assistant
+6:08:03 Skills
+6:51:30 Sub-agents
+7:11:20 Agent Teams
+7:27:30 Browser Automation
+7:42:30 Permissions & Context Management
+7:50:09 GitHub & Worktrees
+7:56:45 Fun Hacks
+8:25:06 The Selling AI Mindset
+8:39:41 Finding Clients
+8:54:01 First Client in 7 Days
+9:14:56 Pricing AI Workflows
+9:35:36 Delivering AI Projects
+9:58:55 Thank You! Join AIS FREE

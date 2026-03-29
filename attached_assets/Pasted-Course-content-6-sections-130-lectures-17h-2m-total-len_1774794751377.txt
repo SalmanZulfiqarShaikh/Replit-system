@@ -1,0 +1,263 @@
+Course content
+6 sections • 130 lectures • 17h 2m total length
+Day 1 - Autonomous AI Agent Demo: Using N8n to Control Smart Home Devices
+7:15
+Day 1 - AI Agent Frameworks Explained: OpenAI SDK, Crew AI, LangGraph & AutoGen
+11:36
+Day 1 - Agent Engineering Setup: Understanding Cursor IDE, UV & API Options
+11:50
+Day 1 - Windows Setup for AI Development: Git, Cursor IDE & UV Package Manager
+20:54
+Day 1 - Setting Up Your Mac for AI Projects: GitHub, Cursor IDE & OpenAI API Key
+19:50
+Day 1 - Building Your First Agentic AI Workflow with OpenAI API: Step-by-Step
+17:35
+Day 1 - Introduction to Agentic AI: Creating Multi-Step LLM Workflows + Autonomy
+1:34
+Day 2 - Building Effective Agents: LLM Autonomy & Tool Integration Explained
+6:13
+Day 2 - 5 Essential LLM Workflow Design Patterns for Building Robust AI Systems
+8:32
+Day 2 - Understanding Agent vs Workflow Patterns in LLM Application Design
+6:39
+Day 3 - Orchestrating Multiple LLMs: Comparing GPT-4o, Claude, Gemini & DeepSeek
+10:16
+Day 3 - Multi-LLM API Integration: Comparing OpenAI, Anthropic & Other Models
+9:47
+Day 3 - Comparing LLM APIs: Using OpenAI Client Library with Claude, Gemini & ++
+12:56
+Day 3 - Multi-Model Orchestration: Creating a System to Evaluate AI Responses
+10:52
+Day 3 - Connecting Agentic Patterns to Tool Use: Essential AI Building Blocks
+0:35
+Day 4 - Comparing AI Agent Frameworks: Simplicity vs Power in LLM Orchestration
+6:30
+Day 4 - Resources vs. Tools: Two Ways to Enhance LLM Capabilities in Agentic AI
+7:45
+Day 4 - Build a Web Chatbot That Acts Like You Using Gradio & OpenAI
+9:48
+Day 4 - Using Gemini to Evaluate GPT-4 Responses: A Multi-LLM Pipeline
+13:15
+Day 4 - Building Agentic LLM Workflows: Resources, Tools & Structured Outputs
+1:22
+Day 5 - Building Your Career Alter Ego: LLM Function Calling with Push Alerts
+8:20
+Day 5 - LLM Tool Calls Demystified: How to Process and Execute Function Requests
+5:44
+Day 5- Building AI Assistants: Implementing Tools for Handling Unknown Questions
+2:44
+Day 5 - Creating & Deploying an AI Agent: From Chat Loop to HuggingFace Spaces
+10:44
+Day 5 - Deploying Career Conversation Chatbots to Gradio
+8:44
+Day 5 - Foundation Week Wrap-up: Building Complete AI Agents with APIs & Tools
+1:35
+Day 5 [Extra] - Building Your First Agent Loop with OpenAI Tools from Scratch
+13:23
+Day 1 - Understanding Async Python: The Foundation for OpenAI Agents SDK
+11:44
+Day 1 - OpenAI Agents SDK Fundamentals: Creating, Tracing, and Running Agents
+5:15
+Day 1 - Introduction to Agent, Runner, and Trace Classes in OpenAI Agents SDK
+8:36
+Day 1 - Vibe Coding: 5 Essential Tips for Efficient Code Generation with LLMs
+6:55
+Day 1 - OpenAI Agents SDK: Understanding Core Concepts for AI Development
+0:16
+Day 2 - Build AI Sales Agents with SendGrid: Tools & Collaboration in Agent SDK
+7:26
+Day 2 - Concurrent LLM Calls: Implementing Asyncio for Parallel Agent Execution
+9:00
+Day 2 - Converting Agents into Tools: Building Hierarchical AI Systems
+6:27
+Day 2 - Agent Control Flow: When to Use Handoffs vs. Agents as Tools
+7:47
+Day 2 - From Function Calls to Agent Autonomy: Sales Automation with OpenAI SDK
+6:33
+Day 2 - Agentic AI for Business: Creating Interactive Sales Outreach Tools
+1:01
+Day 3- Multi-Model Integration: Using Gemini, DeepSeek & Groq with OpenAI Agents
+7:46
+Day 3 - Implementing Guardrails & Structured Outputs for Robust AI Agent Systems
+10:11
+Day 3- AI Safety in Practice: Implementing Guardrails for LLM Agent Applications
+5:25
+Day 4 - Building Deep Research Agents: Implementing OpenAI's Web Search Tool
+8:49
+Day 4 - Building a Planner Agent: Using Structured Outputs with Pydantic in AI
+7:58
+Day 4 - Building an End-to-End Research Pipeline with GPT-4 Agents & Async Tasks
+10:28
+Day 4 - Building a Deep Research Agent: Parallel Searches with AsyncIO
+3:55
+Day 5 - Building a Modular AI Research System with Gradio UI Implementation
+12:26
+Day 5 - Deep Research App: Gradio to Visualize & Monitor Autonomous AI Agents
+3:36
+Day 5 - Deploying Smart Research Agents with Gradio and HuggingFace Spaces
+3:59
+Day 1 - Crew AI Framework: Creating Collaborative AI Agent Teams
+6:02
+Day 1 - Crew AI Framework Explained: Agents, Tasks & Processing Modes Tutorial
+7:44
+Day 1 - Crew AI & LightLLM: Flexible Framework for Integrating Multiple LLMs
+4:46
+Day 1 - Crew AI Tutorial: Setting Up a Debate Project with GPT-4o mini
+9:20
+Day 1 - How to Create an AI Debate System Using Crew AI and Multiple LLMs
+12:20
+Day 1 - Building AI Debate Systems with CrewAI: Compare Different LLMs
+2:07
+Day 2 - Building Crew AI Projects: Tools, Context & Google Search Integration
+6:03
+Day 2 - Building Multi-Agent Financial Research Systems with Crew.ai
+10:46
+Day 2- Enhancing AI Agents with Web Search: Solving the Knowledge Cutoff Problem
+5:44
+Day 3 - Building a Crew AI Stock Picker: Multi-Agent System for Investments
+7:10
+Day 3 - Implementing Pydantic Outputs in Crew AI: Stock Picker Agent Tutorial
+8:39
+Day 3 - Custom Tool Development for Crew AI: JSON Schema & Push Notifications
+8:49
+Day 4 - Crew AI Memory: Vector Storage & SQL Implementation for AI Agents
+12:14
+Day 4 - Crew AI for Coding Tasks: Agents That Generate & Run Python Code
+8:06
+Day 4 - Create a Python-Writing AI Agent: Practical Implementation with Crew AI
+6:04
+Day 5 - Building AI Teams: Configure Crew AI for Collaborative Development
+10:21
+Day 5 - Collaborative AI Agent Development for a Stock Trading Framework
+8:09
+Day 5 - Building a Trading Application Using GPT-4o & Claude
+8:30
+Day 5 - From Single Modules to Complete Systems: Advanced CrewAI Techniques
+8:49
+Day 1 - LangGraph Explained: Graph-Based Architecture for Robust AI Agents
+10:12
+Day 1 - LangGraph Explained: Framework, Studio, and Platform Components Compared
+5:43
+Day 1 - LangGraph Theory: Core Components for Building Advanced Agent Systems
+9:52
+Day 2 - LangGraph Deep Dive: Managing State in Graph-Based Agent Workflows
+5:47
+Day 2 - Mastering LangGraph: How to Define State Objects & Use Reducers
+7:12
+Day 2 - LangGraph Fundamentals: Creating Nodes, Edges & Workflows Step-by-Step
+6:22
+Day 2 - LangGraph Tutorial: Building an OpenAI Chatbot with Graph Structures
+3:59
+Day 3 - LangGraph Advanced Tutorial: Super Steps & Checkpointing Explained
+5:47
+Day 3 - Setting Up Langsmith & Creating Custom Tools for LangGraph Applications
+6:31
+Day 3 - LangGraph Tool Calling: Working with Conditional Edges & Tool Nodes
+11:31
+Day 3 - LangGraph Checkpointing: How to Maintain Memory Between Conversations
+8:56
+Day 3 - Building Persistent AI Memory with SQLite: LangGraph State Management
+5:57
+Day 4 - Playwright Integration with LangGraph: Creating Web-Browsing AI Agents
+8:41
+Day 4 - Create AI Web Assistants: Playwright, LangChain & Gradio Implementation
+8:03
+Day 4 - LLM Evaluator Agents: Creating Feedback Loops with Structured Outputs
+9:16
+Day 4- Creating LLM Feedback Loops: Worker-Evaluator Implementation in LangGraph
+10:28
+Day 4 - Building an AI Sidekick Using LangGraph, Gradio & Browser Automation
+8:49
+Day 5 - Agentic AI: Add Web Search, File System & Python REPL to Your Assistant
+5:34
+Day 5 - LangChain Tool Integration: Building a Powerful AI Sidekick from Scratch
+9:59
+Day 5 - Creating AI Workflows: Graph Builders & Node Communication Techniques
+8:33
+Day 5 - Creating Isolated User Sessions in Gradio Apps Using State Management
+6:00
+Day 5 - Inside AI Feedback Loops: Seeing How AI Evaluates & Corrects Errors
+12:15
+Day 5 - AI Assistant Upgrades: Memory, Clarifying Questions & Custom Tools
+3:46
+Day 1 - Microsoft Autogen 0.5.1: AI Agent Framework Explained for Beginners
+7:36
+Day 1 - AutoGen vs Other Agent Frameworks: Features & Components Compared
+5:48
+Day 1 - AutoGen Agent Chat Tutorial: Creating Tools and Database Integration
+9:44
+Day 1 - Essential AI Components: Models, Messages & Agents Explained
+0:14
+Day 2 - Advanced Autogen Agent Chat: Multimodal Features & Structured Outputs
+9:27
+Day 2 - Implementing Primary and Evaluator Agents in AutoGen with Langchain
+13:36
+Day 2 - Headless Web Scraping Tutorial: MCP Server Fetch Integration in AutoGen
+8:12
+Day 3 - AutoGen Core: The Backbone of Distributed Agent Communications
+5:01
+Day 3 - Agent Communication in Autogen Core: Message Handlers & Dispatching
+8:43
+Day 3 - AutoGenCore Agent Registration and Message Handling: Practical Examples
+9:04
+Day 3 - AutoGenCore Standalone Agents: Rock Paper Scissors with GPT-4o & Llama
+7:28
+Day 4 - Autogen Core Distributed Runtime: Architecture & Components Explained
+3:00
+Day 4 - Implementing Distributed AI Agents with AutoGen Core and gRPC Runtime
+10:28
+Day 4 - Building Distributed Agent Systems: AutoGen Cross-Process Communication
+4:21
+Day 5 - Creating Autonomous Agents That Write & Deploy Other Agents in AutoGen
+5:03
+Day 5 - Implementing Agent-to-Agent Messaging with Autogen Core & Templates
+10:46
+Day 5 - Creating Autonomous AI Agents that Collaborate Using Async Python
+11:44
+Day 1 - Intro to MCP: The USB-C of Agentic AI
+6:34
+Day 1 - Understanding MCP Hosts, Clients, and Servers
+9:18
+Day 1 - Using MCP Servers with OpenAI Agents SDK
+8:06
+Day 1 - Exploring Node-Based MCP Servers & Tool Access
+5:01
+Day 1 - Building an Agent That Uses Multiple MCP Servers
+11:14
+Day 1 - MCP Marketplaces & Security Considerations
+2:51
+Day 2 - Intro to Week 6 Day 2: Building Your Own MCP Server
+4:43
+Day 2 - Wiring Business Logic into Your MCP Server
+6:29
+Day 2 - Creating Client Code to Use Your MCP Server
+12:05
+Day 2 - Wrap-Up: Capabilities of Your Custom MCP Server
+0:20
+Day 3 - Exploring Types of MCP Servers and Agent Memory
+8:19
+Day 3 - Brave Search API: MCP Server Calling the Web
+8:30
+Day 3 - Integrating Polygon API for Stock Market Data
+5:26
+Day 3 - Advanced Market Tools Using Paid Polygon Plan
+5:52
+Day 4 - What’s Next: Launching Our Agent Trading Floor
+7:45
+Day 4 - Viewing the User Interface for Trading Activity
+10:45
+Day 4 - How Trading Agents Operate and Make Decisions
+7:07
+Day 4 - Portfolio Management with Four Autonomous Agents
+10:20
+Day 5 - Which Agent Framework Should You Pick?
+9:10
+Day 5 - Key Settings and Launching the Trading System
+5:51
+Day 5 - Advice for Selecting Agentic Frameworks
+8:27
+Day 5 - 10 Essential Lessons for Building Agent Solutions
+8:15
+Day 5 - Course Recap and Final Goodbye – Keep Building!
+7:14
+Requirements

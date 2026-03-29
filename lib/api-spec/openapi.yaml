@@ -530,6 +530,14 @@ components:
           type: number
         currentPhase:
           type: string
+        yesterdayWork:
+          type: string
+        officeHours:
+          type: string
+        uniHours:
+          type: string
+        commitments:
+          type: string
       required: [hasUni, hasOffice, tasks, availableHours, currentPhase]
 
     AIScheduleResponse:

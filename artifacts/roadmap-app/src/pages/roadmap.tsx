@@ -19,7 +19,7 @@ export default function Roadmap() {
           <div key={phase.id} className="relative pl-8 md:pl-12">
             {/* Timeline dot */}
             <div className={`absolute -left-[9px] top-1 w-4 h-4 rounded-full border-2 ${
-              phase.isBlackout ? 'bg-background border-red-500' : 'bg-background border-primary glow-primary'
+              phase.isBlackout ? 'bg-background border-red-500/60' : 'bg-white border-white'
             }`} />
 
             <div className={`bg-card border rounded-xl p-6 ${phase.isBlackout ? 'border-red-500/30 bg-red-500/5' : 'border-border'}`}>

@@ -47,35 +47,36 @@ router.post("/ai/schedule", async (req, res) => {
   }
   const body = GenerateScheduleBody.parse(req.body);
 
-  const constraints = [];
-  if (body.hasUni) constraints.push("university classes today");
-  if (body.hasOffice) constraints.push("office work today");
-  if (body.tasks) constraints.push(`other tasks: ${body.tasks}`);
+  const scheduleLines: string[] = [];
+  if (body.hasOffice) scheduleLines.push(`  - Office: ${body.officeHours || "9am–3pm"}`);
+  if (body.hasUni) scheduleLines.push(`  - University: ${body.uniHours || "3pm–9pm"}`);
+  if (body.commitments) scheduleLines.push(`  - Other commitments: ${body.commitments}`);
+  if (scheduleLines.length === 0) scheduleLines.push("  - No office or uni today");
 
-  const constraintStr = constraints.length > 0 ? constraints.join(", ") : "no other commitments";
+  const prompt = `You are an AI accountability coach for a Pakistani developer learning AI engineering. Be direct and concise. Casual tone is fine (occasional "bhai").
 
-  const prompt = `You are an AI accountability coach for a Pakistani developer learning AI engineering. Be direct, motivating, and use casual tone (can use "bhai" occasionally).
+TODAY'S DATE: ${new Date().toDateString()}
+CURRENT PHASE: ${body.currentPhase}
+AVAILABLE CODING TIME: ${body.availableHours} hours
 
-User has ${body.availableHours} hours available for coding today.
-Constraints: ${constraintStr}
-Current roadmap phase: ${body.currentPhase}
+TODAY'S SCHEDULE:
+${scheduleLines.join("\n")}
 
-Generate a specific, actionable daily coding schedule. Include:
-1. Specific tasks to complete today (2-4 tasks max based on hours)
-2. Time allocations for each task
-3. Pomodoro schedule recommendation (what time to start, how many sessions)
-4. A motivational one-liner
+${body.yesterdayWork ? `YESTERDAY'S PROGRESS:\n${body.yesterdayWork}\n` : ""}
+TODAY'S PLAN (user input):\n${body.tasks}
 
-Format your response as:
+Based on the actual available time window (accounting for office/uni hours), generate a practical schedule. Don't suggest coding during office or uni hours.
+
+Format EXACTLY as:
 TASKS:
-- [task with duration]
-- [task with duration]
+- [specific task + time estimate]
+- [specific task + time estimate]
 
-POMODORO: [specific recommendation like "Start at 8pm, 3x 50min sessions"]
+POMODORO: [e.g. "Start at 9pm — 2x 25min sessions before sleep"]
 
-MOTIVATION: [one motivational sentence]
+MOTIVATION: [one punchy sentence]
 
-Keep it concise and actionable. No fluff.`;
+Max 4 tasks. Be realistic about available hours. If yesterday had good progress, build on it.`;
 
   try {
     const aiResponse = await callGroq(prompt);

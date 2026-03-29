@@ -1,0 +1,134 @@
+52 downloadable resources
+Access on mobile and TV
+Closed captions
+Certificate of completion
+Course content
+12 sections • 64 lectures • 10h 19m total length
+Getting Started with AI Voice Agents
+5:27
+Real Call Recording of AI Voice Agents with Human
+3:43
+The Most Important Tools You Need [MOST IMP CLASS]
+4:52
+Automation Tech Stack
+4:54
+How AI Callers Work
+5:16
+Ai Voice Agents vs Traditional Outbound Marketing
+3:42
+The Ultimate tool for building AI Voice Assistant
+2:40
+Building Our First AI Voice Agent
+18:04
+Drafting Detailed Prompts, AI Agent Identity, and Tasks
+10:23
+Enhancing AI Voice Agents with Knowledge Bases
+5:36
+Efficient Use of Knowledge Bases and Vector Data
+2:22
+Exploring AI Voice Agents: Levels and Applications
+10:21
+Understanding Advanced Functions and Features
+21:52
+A Complete Prompt Engineering Guide for AI Voice Agents
+14:48
+How to Import Phone Numbers into Retell AI from Twilio via SIP Trunk
+10:49
+CNAME your International Numbers with your Business Name
+9:23
+Inbound vs Outbound Calls
+1:08
+Building an AI Appointment Voice Agent from Scratch
+32:33
+Manthan's Motivation LOL
+0:51
+Automation vs AI Automation vs AI Agents vs Multi-Agent Architecture
+1:45
+Automate End-of-Call Reports Using Make
+21:32
+Simplify Time Zone Conversion and Personalize Lead Magnets with AI Callers
+16:11
+Troubleshooting Makecom Post-Call Analysis Issue: Solved
+11:55
+Troubleshooting Call_Analyzed Issue
+1:04
+Time Zone Issue Fixed!
+0:16
+Outbound Calling with AI Voice Agents
+40:06
+AI Cold Calling: Automating Phone Calls with AI and No-Code
+6:45
+Mastering Inbound AI Calls: Adding Personalization
+19:57
+Automate and Personalize Calls Instantly with n8n
+13:51
+Using n8n AI Agents for Business Promotion, Upsells, and Sales
+20:30
+Appointment Reminder AI Voice Agent with n8n
+16:53
+No-Code Retell AI Setup in n8n
+2:17
+Batch Calling Without a CRM
+3:39
+n8n Ultimate Cheat Sheet
+0:12
+When n8n integration is needed with Voice AI
+0:57
+Mastering Multi-State Agents: A Step-by-Step Guide
+21:56
+Full-Stack Real Estate Multi-Prompt AI Voice Agent
+32:24
+The Perfect Receptionist
+19:58
+10+ Ultimate Prompt Templates for AI Agents
+2:59
+Creating Instant Callbacks with AI and GoHighLevel
+2:26
+Getting Started with AI Voice Agents Using GHL and Retell AI
+35:07
+Natively Integrating Retell AI with GoHighLevel
+3:43
+Let's Build ZERO Hallucination AI Agents
+6:05
+Mastering the Fundamentals of Conversation Flow Agents
+18:38
+Building Conversation Flow Agent from Scratch : Notion + Gmail + Calendar + n8n
+26:53
+How to Become a Platform Partner and Get Listed
+0:56
+Launching Your AI Agent Agency: A Practical Blueprint
+15:42
+Raw Building Cold Email Campaign
+42:20
+Boosting Call Pickup Rates with Branded Numbers
+3:41
+Creating Your Own AI Voice: Easy AI Voice Cloning
+3:33
+Testing AI Voice Agent: Making Thousands of Calls Before Launch
+2:22
+Easy White Labeling and Branding Solutions for AI Automation Agencies
+5:09
+SOP: Installing AI Voice Agents in Businesses
+4:08
+How I Price My Ai Services
+3:06
+AI Phone Callers in Action: 5 Real-World Business Implementations
+4:12
+Retell AI vs Vapi AI: Why I Made the Switch
+7:00
+Understanding Call Limits and Concurrency
+1:21
+AI Voice Agents: A Straightforward Pricing Overview
+1:58
+Simplify Your Team's Workspace
+1:21
+Extending Go Highlevel Trail
+1:54
+Everyone's talking about Model Context Protocol (MCP).
+0:44
+Create Your Own AI Voice Agent: Course Project Homework
+1:33
+Congrats! You did it.
+1:26
+Bonus Lecture
+0:27

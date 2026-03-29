@@ -1,0 +1,102 @@
+VIBE CODING FULL COURSE: Gemini 3.1 + Antigravity (6 Hrs)
+
+Nick Saraev
+348k subscribers
+
+
+6.4k
+
+
+Share
+
+Ask
+
+Save
+
+159,233 views  27 Feb 2026
+🔥 Join Maker School & get customer #1 guaranteed: https://skool.com/makerschool/about
+💎 All course files: https://drive.google.com/drive/folder...
+🎙️ Listen to my silly podcast:    / @stackedpod  
+
+💼 Work with my team: https://dub.sh/work-with-me-lkj
+
+📚 More free courses
+→ Claude Code (4hr full course):    • CLAUDE CODE FULL COURSE 4 HOURS: Build & S...  
+→ Agentic Workflows (6hr full course):    • AGENTIC WORKFLOWS 6 HOUR COURSE: Beginner ...  
+→ N8N (6hr full course, 890K+ views):    • N8N FULL COURSE 6 HOURS (Build & Sell AI A...  
+
+Summary ⤵️
+This is the definitive vibe coding full course, where you'll learn how to vibe code with Gemini 3.1 & Antigravity. Throughout the course, you'll build five full fledged apps, and along the way, learn real software engineering topics like hosting and deployment, modern software design patterns, languages and frameworks, version control & GitHub repositories, and programming with agents and agent teams. We'll use a mixture of Gemini 3.1 Pro, Antigravity, Supabase, Next.js, Vite, Apify, & more.
+
+The course will focus primarily on Gemini 3.1 Pro (High)/Antigravity. We'll teach you how to design apps from scratch and then launch them, including with payments, Stripe integrations, authentication, databases, and more. And all of it will give you practical, hands-on look at how to vibe code stuff for real in 2026.
+
+My software, tools, & deals (some give me kickbacks—thank you!)
+🤖 Apify:  https://apify.com?fpr=nick (30% off for 2 months with code 30NS) 
+🚀 Instantly: https://link.nicksaraev.com/instantly...
+
+Follow me on other platforms 😈
+📸 Instagram:   / nick_saraev  
+🤙 Blog: https://nicksaraev.com
+
+Why watch?
+If this is your first view—hi, I’m Nick! TLDR: I spent six years building automated businesses with Make.com (most notably 1SecondCopy, a content company that hit 7 figures). Today a lot of people talk about automation, but I’ve noticed that very few have practical, real world success making money with it. So this channel is me chiming in and showing you what real systems that make real revenue look like.
+
+Chapters
+00:00 Introduction to the Vibe Coding Full Course
+02:30 Setting Up Antigravity
+05:45 Navigating the Antigravity Interface
+09:49 The Agent Chat Panel and AI Interaction
+11:40 Customizing AI Behavior and Workflows
+15:14 Introduction to MCP Servers
+16:12 Adding Context to Prompts
+16:56 Conversation Modes in Gemini 3.1 Pro
+18:08 Selecting AI Models for Tasks
+19:50 Voice Dictation and Communication
+22:07 Using Claude Code for Development
+24:23 Leveraging AI for Business Efficiency
+24:53 Getting Started with Cloud Code
+28:45 Building a Simple Portfolio Site
+32:07 Comparing AI-Generated Designs
+36:51 Making Design Adjustments
+41:29 Deploying Your Website to Netlify
+44:18 Understanding Security in Applications
+45:57 Key Security Practices
+59:43 Conducting a Security Audit
+1:02:22 Transitioning to a Full Stack Vibe Coded App
+1:02:38 Building a Client Dashboard Platform
+1:03:41 The Vibe Coding Design Loop
+1:06:55 Common Vibe Coding Stack Overview
+1:45:36 Creating the Full Stack Client Dashboard
+2:11:49 Understanding Modern Software Engineering Principles
+2:18:53 The Development Process Overview
+2:20:56 Basics of Databases and Hosting
+2:24:31 Database Requests Simplified
+2:24:44 Types of Databases
+2:25:57 SQL vs NoSQL Explained
+2:28:06 Programming Languages Overview
+2:28:33 The Role of Frameworks
+2:33:55 Frameworks in Action
+2:36:00 Understanding Version Control
+2:39:00 GitHub and Repositories
+2:42:14 Smart Ways to use Agents in Vibe Coding
+2:53:00 Vibe Coding a Lead Generation App
+2:56:51 App Structure and Planning
+2:57:57 Designing the User Experience
+3:01:16 Testing and Functionality
+3:02:13 Troubleshooting and Debugging
+3:10:11 Integrating APIs
+3:36:41 Logo and Branding
+3:38:53 Deploying Vibe Coded Projects on Netlify
+3:41:29 Security Audit Initiated
+3:47:49 API Wrapping and Functionality
+3:50:37 Payment Integration Overview
+3:54:14 Vibe Coding a Thumbnail Generator
+3:59:49 Design Inspiration and Development
+4:06:56 Vibe Coding User Experience Enhancements
+4:26:59 Deploying Vibe Coded Apps to Production
+4:38:34 Debugging Payment Issues
+4:48:19 App Launch and Security Check
+4:56:12 Ideating New Vibe Coded App Concept: Splinter
+5:50:00 Feature Integration and Enhancements
+5:54:00 Pricing and Marketing Strategies
+6:21:59 Vibe Coding Full Course Wrap-Up

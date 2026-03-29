@@ -1,0 +1,198 @@
+
+Search
+
+
+
+Create
+
+
+Avatar image
+Home
+Shorts
+Subscriptions
+
+Abu Bakar Automation
+
+AI Foundations
+
+AI Learners India
+
+Akshay Saini
+
+Alex Hormozi
+
+Alyy Hash
+
+Arrlifts
+Show more
+You
+History
+Playlists
+Watch Later
+Liked videos
+Your videos
+Downloads
+Show more
+Explore
+Music
+Gaming
+News
+Show more
+More from YouTube
+YouTube Premium
+YouTube Music
+YouTube Kids
+Report history
+AboutPressCopyrightContact usCreatorAdvertiseDevelopers
+TermsPrivacyPolicy & SafetyHow YouTube worksTest new features
+© 2026 Google LLC
+
+
+Play all
+Generative AI using LangChain
+CampusX · 
+Course
+21 videos Last updated on 9 Mar 2026
+
+
+
+
+Play
+
+Comments
+This playlist is your hands-on guide to building intelligent, conversational, and reasoning AI applications with ease. We'll break down complex concepts into simple, bite-sized lessons, covering everything from LLM chaining, memory, retrieval-augmented generation (RAG), and agents to real-world chatbots, document Q&A, and more.
+
+You'll discover:
+✅ How LangChain works for chaining LLM calls
+✅ Building AI-powered chatbots & apps
+✅ Retrieval-Augmented Generation (RAG) for smarter AI
+✅ Integrating external data & APIs for real-world use cases
+
+Playlist Resources: https://learnwith.campusx.in/products#nav_bar
+
+Reach us at [support@campusx.in]
+1
+true
+50:15
+Now playing
+GenAI Roadmap for Beginners | End-to-End GenAI Course 2025 | CampusX
+
+2
+true
+15:19
+Now playing
+Generative AI using LangChain | GENAI for Beginners | CampusX
+
+3
+true
+37:44
+Now playing
+Introduction to LangChain | LangChain for Beginners | Video 1 | CampusX
+
+4
+true
+53:24
+Now playing
+LangChain Components | GenAI using LangChain | Video 2 | CampusX
+
+5
+true
+1:42:03
+Now playing
+LangChain Models | Indepth Tutorial with Code Demo | Video 3 | CampusX
+
+6
+true
+1:18:33
+Now playing
+Prompts in LangChain | Generative AI using LangChain | Video 4 | CampusX
+
+7
+true
+1:08:13
+Now playing
+Structured Output in LangChain | Generative AI using LangChain | Video 5 | CampusX
+
+8
+true
+53:13
+Now playing
+Output Parsers in LangChain | Generative AI using LangChain | Video 6 | CampusX
+
+9
+true
+54:01
+Now playing
+Chains in LangChain | Generative AI using LangChain | Video 7 | CampusX
+
+10
+true
+1:16:22
+Now playing
+What are Runnables in LangChain | Generative AI using LangChain | Video 8 | CampusX
+
+11
+true
+54:26
+Now playing
+Langchain Runnables - Part 2 | Generative AI using LangChain | Video 9 | CampusX
+
+12
+true
+56:44
+Now playing
+Document Loaders in LangChain | Generative AI using LangChain | Video 10 | CampusX
+
+13
+true
+59:01
+Now playing
+Text Splitters in LangChain | Generative AI using LangChain | Video 11 | CampusX
+
+14
+true
+50:31
+Now playing
+Vector Stores in LangChain | Generative AI using LangChain | Video 12 | CampusX
+
+15
+true
+51:10
+Now playing
+Retrievers in LangChain | Generative AI using LangChain | Video 13 | CampusX
+
+16
+true
+59:24
+Now playing
+Retrieval Augmented Generation | What is RAG | How does RAG Work | RAG Explained | CampusX
+
+17
+true
+46:15
+Now playing
+YouTube Chatbot using LangChain | Building a RAG system in LangChain | Video 15 | CampusX
+
+18
+true
+45:16
+Now playing
+Tools in LangChain | Generative AI using LangChain | Video 16 | CampusX
+
+19
+true
+58:47
+Now playing
+Tool Calling in LangChain | Generative AI using LangChain | Video 17 | CampusX
+
+20
+true
+1:12:47
+Now playing
+Building end-to-end AI Agent in LangChain | Generative AI using LangChain | Video 18 | CampusX
+
+21
+true
+2:49:41
+Now playing
+Ollama Masterclass 2026: Run Powerful Local LLMs with Ollama (3-Hour Full Course) | CampusX

@@ -233,6 +233,10 @@ export const GenerateScheduleBody = zod.object({
   tasks: zod.string(),
   availableHours: zod.number(),
   currentPhase: zod.string(),
+  yesterdayWork: zod.string().optional(),
+  officeHours: zod.string().optional(),
+  uniHours: zod.string().optional(),
+  commitments: zod.string().optional(),
 });
 
 export const GenerateScheduleResponse = zod.object({
