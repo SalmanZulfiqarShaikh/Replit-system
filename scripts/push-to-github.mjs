@@ -49,7 +49,7 @@ async function run() {
       remote: 'github',
       remoteRef: 'main',
       force: true,
-      onAuth: () => ({ username: TOKEN, password: '' }),
+      onAuth: () => ({ username: 'token', password: TOKEN }),
       onProgress: (progress) => {
         if (progress.phase) process.stdout.write(`\r${progress.phase} ${progress.loaded || ''}/${progress.total || ''}`);
       },
