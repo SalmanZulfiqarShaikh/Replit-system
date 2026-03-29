@@ -4,6 +4,7 @@ import {
   episodeProgressTable,
   dailyCheckinsTable,
   userProfilesTable,
+  pomodoroSessionsTable,
 } from "@workspace/db/schema";
 import { eq, desc, gte, and } from "drizzle-orm";
 import { LogEpisodeCompletionBody, GetHoursLogQueryParams, RemoveEpisodeCompletionParams } from "@workspace/api-zod";
