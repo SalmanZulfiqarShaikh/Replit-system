@@ -53,7 +53,7 @@ if (process.env.NODE_ENV === "production") {
 
   if (existsSync(staticDir)) {
     app.use(express.static(staticDir));
-    app.get("*", (_req, res) => {
+    app.get("/{*path}", (_req, res) => {
       res.sendFile(join(staticDir, "index.html"));
     });
   } else {

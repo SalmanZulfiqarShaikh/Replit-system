@@ -1,0 +1,50 @@
+2026-03-29T17:26:37.599107703Z 
+2026-03-29T17:26:37.599110312Z PathError [TypeError]: Missing parameter name at index 1: *; visit https://git.new/pathToRegexpError for info
+2026-03-29T17:26:37.599113483Z     at name (/opt/render/project/src/node_modules/.pnpm/path-to-regexp@8.3.0/node_modules/path-to-regexp/src/index.ts:225:13)
+2026-03-29T17:26:37.599116103Z     at parse (/opt/render/project/src/node_modules/.pnpm/path-to-regexp@8.3.0/node_modules/path-to-regexp/src/index.ts:242:62)
+2026-03-29T17:26:37.599118993Z     at pathToRegexp (/opt/render/project/src/node_modules/.pnpm/path-to-regexp@8.3.0/node_modules/path-to-regexp/src/index.ts:480:54)
+2026-03-29T17:26:37.599152213Z     at Object.match (/opt/render/project/src/node_modules/.pnpm/path-to-regexp@8.3.0/node_modules/path-to-regexp/src/index.ts:438:28)
+2026-03-29T17:26:37.599158964Z     at matcher (/opt/render/project/src/node_modules/.pnpm/router@2.2.0/node_modules/router/lib/layer.js:86:23)
+2026-03-29T17:26:37.599161544Z     at new Layer (/opt/render/project/src/node_modules/.pnpm/router@2.2.0/node_modules/router/lib/layer.js:93:62)
+2026-03-29T17:26:37.599164053Z     at Function.route (/opt/render/project/src/node_modules/.pnpm/router@2.2.0/node_modules/router/index.js:428:17)
+2026-03-29T17:26:37.599166504Z     at Function.route (/opt/render/project/src/node_modules/.pnpm/express@5.2.1/node_modules/express/lib/application.js:257:22)
+2026-03-29T17:26:37.599169054Z     at Function.app2.<computed> (/opt/render/project/src/node_modules/.pnpm/express@5.2.1/node_modules/express/lib/application.js:478:22)
+2026-03-29T17:26:37.599172504Z     at <anonymous> (/opt/render/project/src/artifacts/api-server/src/app.ts:56:9) {
+2026-03-29T17:26:37.599175544Z   originalPath: '*'
+2026-03-29T17:26:37.599178034Z }
+2026-03-29T17:26:37.599180314Z 
+2026-03-29T17:26:37.599182774Z Node.js v22.22.0
+2026-03-29T17:26:37.797269352Z /opt/render/project/src/artifacts/api-server:
+2026-03-29T17:26:37.797290062Z  ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @workspace/api-server@0.0.0 start: `node --enable-source-maps ./dist/index.mjs`
+2026-03-29T17:26:37.797294372Z Exit status 1
+2026-03-29T17:26:44.979204035Z ==> Running 'pnpm --filter @workspace/api-server run start'
+2026-03-29T17:26:47.789393931Z 
+2026-03-29T17:26:47.789447712Z > @workspace/api-server@0.0.0 start /opt/render/project/src/artifacts/api-server
+2026-03-29T17:26:47.789456162Z > node --enable-source-maps ./dist/index.mjs
+2026-03-29T17:26:47.789460412Z 
+2026-03-29T17:26:50.28484767Z /opt/render/project/src/node_modules/.pnpm/path-to-regexp@8.3.0/node_modules/path-to-regexp/src/index.ts:225
+2026-03-29T17:26:50.284870161Z       throw new PathError(`Missing parameter name at index ${index}`, str);
+2026-03-29T17:26:50.284875671Z             ^
+2026-03-29T17:26:50.284880491Z 
+2026-03-29T17:26:50.284885301Z PathError [TypeError]: Missing parameter name at index 1: *; visit https://git.new/pathToRegexpError for info
+2026-03-29T17:26:50.284890571Z     at name (/opt/render/project/src/node_modules/.pnpm/path-to-regexp@8.3.0/node_modules/path-to-regexp/src/index.ts:225:13)
+2026-03-29T17:26:50.284895231Z     at parse (/opt/render/project/src/node_modules/.pnpm/path-to-regexp@8.3.0/node_modules/path-to-regexp/src/index.ts:242:62)
+2026-03-29T17:26:50.284900291Z     at pathToRegexp (/opt/render/project/src/node_modules/.pnpm/path-to-regexp@8.3.0/node_modules/path-to-regexp/src/index.ts:480:54)
+2026-03-29T17:26:50.284905021Z     at Object.match (/opt/render/project/src/node_modules/.pnpm/path-to-regexp@8.3.0/node_modules/path-to-regexp/src/index.ts:438:28)
+2026-03-29T17:26:50.284909691Z     at matcher (/opt/render/project/src/node_modules/.pnpm/router@2.2.0/node_modules/router/lib/layer.js:86:23)
+2026-03-29T17:26:50.284914051Z     at new Layer (/opt/render/project/src/node_modules/.pnpm/router@2.2.0/node_modules/router/lib/layer.js:93:62)
+2026-03-29T17:26:50.284919202Z     at Function.route (/opt/render/project/src/node_modules/.pnpm/router@2.2.0/node_modules/router/index.js:428:17)
+2026-03-29T17:26:50.284924002Z     at Function.route (/opt/render/project/src/node_modules/.pnpm/express@5.2.1/node_modules/express/lib/application.js:257:22)
+2026-03-29T17:26:50.284928772Z     at Function.app2.<computed> (/opt/render/project/src/node_modules/.pnpm/express@5.2.1/node_modules/express/lib/application.js:478:22)
+2026-03-29T17:26:50.284933702Z     at <anonymous> (/opt/render/project/src/artifacts/api-server/src/app.ts:56:9) {
+2026-03-29T17:26:50.284938912Z   originalPath: '*'
+2026-03-29T17:26:50.284943362Z }
+2026-03-29T17:26:50.284947822Z 
+2026-03-29T17:26:50.284952282Z Node.js v22.22.0
+2026-03-29T17:26:50.480517451Z /opt/render/project/src/artifacts/api-server:
+2026-03-29T17:26:50.480547071Z  ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @workspace/api-server@0.0.0 start: `node --enable-source-maps ./dist/index.mjs`
+2026-03-29T17:26:50.480555811Z Exit status 1
+2026-03-29T17:26:52.686340122Z ==> No open ports detected, continuing to scan...
+2026-03-29T17:26:53.068213694Z ==> Docs on specifying a port: https://render.com/docs/web-services#port-binding
+2026-03-29T17:27:00.26305081Z ==> Exited with status 1
+2026-03-29T17:27:00.271536205Z ==> Common ways to troubleshoot your deploy: https://render.com/docs/troubleshooting-deploys
