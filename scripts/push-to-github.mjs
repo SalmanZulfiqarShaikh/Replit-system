@@ -41,7 +41,7 @@ const http = {
           method,
           statusCode: res.statusCode,
           headers: res.headers,
-          body: [res],
+          body: res,
         });
       });
       req.on('error', reject);
