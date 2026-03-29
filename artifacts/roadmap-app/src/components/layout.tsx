@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/lib/auth";
+import { usePomodoro } from "@/components/pomodoro-context";
 import { 
   LayoutDashboard, 
   CheckSquare, 
@@ -10,6 +11,8 @@ import {
   Map, 
   FileText,
   User,
+  Play,
+  Pause,
 } from "lucide-react";
 
 const navItems = [
@@ -20,6 +23,32 @@ const navItems = [
   { href: "/roadmap", label: "Roadmap", icon: Map },
   { href: "/report", label: "Weekly Report", icon: FileText },
 ];
+
+function MiniTimer() {
+  const { isStarted, isActive, timeLeft, mode, toggleTimer } = usePomodoro();
+  if (!isStarted) return null;
+
+  const minutes = Math.floor(timeLeft / 60);
+  const seconds = timeLeft % 60;
+
+  return (
+    <div className="mx-4 mb-2 flex items-center gap-3 px-4 py-2.5 rounded-lg bg-white/5 border border-white/10">
+      <div className={cn("w-2 h-2 rounded-full flex-shrink-0", isActive ? "bg-white animate-pulse" : "bg-white/40")} />
+      <div className="flex-1 min-w-0">
+        <p className="text-xs font-mono text-white/50 uppercase tracking-widest">{mode}</p>
+        <p className="text-sm font-mono font-bold text-white tabular-nums">
+          {String(minutes).padStart(2, "0")}:{String(seconds).padStart(2, "0")}
+        </p>
+      </div>
+      <button
+        onClick={toggleTimer}
+        className="w-7 h-7 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white"
+      >
+        {isActive ? <Pause className="w-3 h-3" /> : <Play className="w-3 h-3 ml-0.5" />}
+      </button>
+    </div>
+  );
+}
 
 export function Layout({ children }: { children: ReactNode }) {
   const [location] = useLocation();
@@ -56,6 +85,8 @@ export function Layout({ children }: { children: ReactNode }) {
             );
           })}
         </nav>
+
+        <MiniTimer />
         
         <div className="p-4 border-t border-border/50">
           <div className="flex items-center gap-3 px-4 py-3 rounded-lg bg-secondary/50 border border-border">
@@ -75,6 +106,7 @@ export function Layout({ children }: { children: ReactNode }) {
         {/* Mobile Header */}
         <header className="md:hidden flex items-center justify-between p-4 border-b border-border bg-sidebar">
           <span className="font-mono font-bold text-sm text-white tracking-widest">SALMAN'S SYSTEM</span>
+          <MiniTimerMobile />
         </header>
 
         {/* Mobile Nav (Bottom Bar) */}
@@ -105,5 +137,21 @@ export function Layout({ children }: { children: ReactNode }) {
         </div>
       </main>
     </div>
+  );
+}
+
+function MiniTimerMobile() {
+  const { isStarted, isActive, timeLeft, toggleTimer } = usePomodoro();
+  if (!isStarted) return null;
+  const minutes = Math.floor(timeLeft / 60);
+  const seconds = timeLeft % 60;
+  return (
+    <button
+      onClick={toggleTimer}
+      className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/10 border border-white/20 font-mono text-sm text-white"
+    >
+      <span className={cn("w-1.5 h-1.5 rounded-full", isActive ? "bg-white animate-pulse" : "bg-white/40")} />
+      {String(minutes).padStart(2, "0")}:{String(seconds).padStart(2, "0")}
+    </button>
   );
 }

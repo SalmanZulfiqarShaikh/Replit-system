@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 
 import { Layout } from "@/components/layout";
+import { PomodoroProvider } from "@/components/pomodoro-context";
 import Dashboard from "@/pages/dashboard";
 import Checkin from "@/pages/checkin";
 import Pomodoro from "@/pages/pomodoro";
@@ -42,7 +43,9 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
-          <Router />
+          <PomodoroProvider>
+            <Router />
+          </PomodoroProvider>
         </WouterRouter>
         <Toaster />
       </TooltipProvider>
