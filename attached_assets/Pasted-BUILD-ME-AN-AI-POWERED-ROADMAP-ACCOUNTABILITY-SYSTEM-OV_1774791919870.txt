@@ -1,0 +1,157 @@
+BUILD ME AN AI-POWERED ROADMAP ACCOUNTABILITY SYSTEM
+
+=== OVERVIEW ===
+A web app that helps me stay on track with my 10-month AI engineering roadmap. 
+It uses AI (Groq API) to adapt my daily schedule based on my availability, tracks progress, 
+runs Pomodoro sessions, and keeps me accountable.
+
+=== CORE FEATURES ===
+
+1. DAILY CHECK-IN FORM
+   When I open the app each day, show a form:
+   - "Do you have uni today?" (Yes/No)
+   - "Do you have office today?" (Yes/No)
+   - "Do you have any tasks/events?" (Text input)
+   - "How many hours can you code today?" (Number input: 0-8)
+   - Based on answers, AI generates a personalized daily schedule
+
+2. AI SCHEDULE GENERATOR (GROQ API)
+   - Takes my roadmap phase (from HTML)
+   - Takes my daily availability (from check-in form)
+   - Generates specific tasks for today
+   - Example output:
+     * "Today: Complete Episode 25 (2 hours)"
+     * "Study DSA for 1 hour"
+     * "Pomodoro schedule: 8pm-10pm (2 sessions)"
+
+3. POMODORO TIMER
+   - Customizable: 25/50 min work, 5/10 min break
+   - Start button → Opens Spotify in new tab (hardcode URL: https://open.spotify.com)
+   - Timer countdown display
+   - Sound notification when session ends
+   - Auto-log completed sessions
+   - Daily streak counter
+
+4. PROGRESS TRACKING
+   - Manual log: "I completed Episode X today"
+   - Checkbox for each episode/video in roadmap
+   - Hours logged per day/week/month
+   - Visual progress bar for each phase
+   - Calendar heatmap (GitHub-style) showing coding days
+
+5. WEEKLY REPORTS
+   - Sunday 8pm: Generate AI summary
+   - "This week you coded 15 hours ✅"
+   - "You completed Episodes 23-25"
+   - "Next week's goal: Episodes 26-28"
+   - Email option (optional)
+
+6. ROADMAP INTEGRATION
+   - Import my HTML roadmap structure
+   - Display phases with dates
+   - Show current phase prominently
+   - Link to course playlists (Piyush, CampusX, Ed Donner)
+   - Click episode → Opens YouTube link
+
+7. STREAK & GAMIFICATION
+   - Daily streak counter (like Duolingo)
+   - "Never zero" rule: 15 mins = keeps streak
+   - Achievements: "7 day streak 🔥", "50 hours logged 💯"
+   - Leaderboard (just for motivation, fake data is fine)
+
+8. AI ACCOUNTABILITY COACH
+   - Weekly check-in via Groq API
+   - Motivational messages: "Bhai, you're crushing it ✅"
+   - Warning messages: "You're behind schedule ⚠️"
+   - Adaptive advice: "Skip weekend plans, catch up on Phase 1"
+
+=== TECH STACK ===
+Frontend: React.js with Tailwind CSS
+Backend: Node.js/Express OR Next.js API routes
+Database: MongoDB or PostgreSQL (your choice)
+AI: Groq API (I'll provide my API key)
+Auth: Simple email/password (no OAuth needed)
+Hosting: Replit-ready
+
+=== UI/UX REQUIREMENTS ===
+- Dark mode (like my HTML roadmap)
+- Clean, minimal design
+- Mobile responsive
+- Fast loading
+- Spotify green accent color (#1DB954)
+- Space Mono font for headers
+
+=== DATA STRUCTURE ===
+
+User:
+- email, password
+- currentPhase (string)
+- totalHoursLogged (number)
+- currentStreak (number)
+- lastCheckIn (date)
+
+DailyLog:
+- date
+- hasUni (boolean)
+- hasOffice (boolean)
+- availableHours (number)
+- completedEpisodes (array)
+- pomodoroSessions (number)
+- hoursLogged (number)
+
+Roadmap (imported from HTML):
+- phases (array of objects)
+  - title, duration, skills, resources, dateRange
+
+=== GROQ API INTEGRATION ===
+Use Groq API for:
+1. Daily schedule generation
+   Prompt: "User has {availableHours} hours today. Current phase: {currentPhase}. 
+            Generate a specific task list for today."
+
+2. Weekly accountability report
+   Prompt: "User logged {hoursThisWeek} hours this week. Goal was 15 hours. 
+            Progress: {completedEpisodes}. Generate motivational feedback."
+
+3. Adaptive advice
+   Prompt: "User is behind on Phase 1. Exams in 6 weeks. 
+            Generate realistic catch-up advice."
+
+=== PRIORITY FEATURES (Build These First) ===
+1. Daily check-in form
+2. Pomodoro timer with Spotify integration
+3. Progress tracking (manual episode completion)
+4. Roadmap display with links
+5. Basic AI schedule generation
+
+=== NICE-TO-HAVE (Add If Time Permits) ===
+- Calendar view
+- Weekly reports via email
+- Export data to CSV
+- Dark/light mode toggle
+- Mobile app (PWA)
+
+=== SPOTIFY INTEGRATION ===
+Simple approach:
+- When Pomodoro starts, open: window.open('https://open.spotify.com', '_blank')
+- User plays their own playlist
+- No complex Spotify API needed
+
+=== GROQ API SETUP ===
+- I'll provide my API key via .env file
+- Use 'llama-3.3-70b-versatile' model
+- Keep prompts simple and structured
+- Add error handling for API failures
+
+=== DEPLOYMENT ===
+- Must work on Replit
+- Use Replit Secrets for API keys
+- Include README with setup instructions
+- One-click deploy if possible
+
+=== WHAT SUCCESS LOOKS LIKE ===
+I open the app daily, fill out my availability, AI tells me what to do, 
+I run Pomodoros with Spotify, I log my progress, and the system keeps me 
+accountable. If I'm falling behind, the AI motivates me to catch up.
+
+START WITH MVP (FEATURES 1-5), THEN ADD EXTRAS.
