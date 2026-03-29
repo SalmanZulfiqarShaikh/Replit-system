@@ -9,7 +9,6 @@ import {
   TrendingUp, 
   Map, 
   FileText,
-  Terminal,
   LogIn,
   LogOut,
   User
@@ -30,12 +29,9 @@ function LoginScreen() {
     <div className="min-h-screen bg-background flex items-center justify-center p-4">
       <div className="max-w-md w-full text-center space-y-8">
         <div className="space-y-3">
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <Terminal className="w-10 h-10 text-primary" />
+          <div className="flex items-center justify-center mb-6">
+            <span className="text-5xl font-mono font-bold text-white tracking-widest">SALMA</span>
           </div>
-          <h1 className="font-mono font-bold text-3xl text-white tracking-tight">
-            SYSTEM.<span className="text-primary">INIT</span>
-          </h1>
           <p className="text-muted-foreground font-mono text-sm tracking-widest uppercase">
             AI Roadmap Accountability
           </p>
@@ -67,7 +63,7 @@ function LoginScreen() {
             className="w-full flex items-center justify-center gap-3 bg-primary hover:bg-primary/90 text-black font-bold py-3 px-6 rounded-lg transition-all duration-200 font-mono text-sm tracking-wide"
           >
             <LogIn className="w-5 h-5" />
-            LOG IN TO ACCESS SYSTEM
+            LOG IN TO ACCESS SALMA
           </button>
         </div>
 
@@ -87,8 +83,8 @@ export function Layout({ children }: { children: ReactNode }) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center space-y-3">
-          <Terminal className="w-8 h-8 text-primary mx-auto animate-pulse" />
-          <p className="text-muted-foreground font-mono text-sm">LOADING SYSTEM...</p>
+          <p className="font-mono font-bold text-2xl text-white tracking-widest">SALMA</p>
+          <p className="text-muted-foreground font-mono text-sm">LOADING...</p>
         </div>
       </div>
     );
@@ -103,9 +99,9 @@ export function Layout({ children }: { children: ReactNode }) {
       {/* Sidebar */}
       <aside className="hidden md:flex flex-col w-64 border-r border-border bg-sidebar h-screen sticky top-0">
         <div className="p-6 flex items-center gap-3 border-b border-border/50">
-          <Terminal className="w-8 h-8 text-primary" />
           <div>
-            <h1 className="font-mono font-bold text-lg leading-tight text-white tracking-tight">SYSTEM.<span className="text-primary">INIT</span></h1>
+            <h1 className="font-mono font-bold text-xl leading-tight text-white tracking-widest">SALMA</h1>
+            <p className="text-xs text-muted-foreground font-mono mt-0.5">AI Roadmap</p>
           </div>
         </div>
         
@@ -119,11 +115,11 @@ export function Layout({ children }: { children: ReactNode }) {
                 className={cn(
                   "flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200",
                   isActive 
-                    ? "bg-primary/10 text-primary border border-primary/20 shadow-[0_0_15px_-3px_rgba(29,185,84,0.15)]" 
+                    ? "bg-white/10 text-white border border-white/20" 
                     : "text-muted-foreground hover:bg-secondary hover:text-white"
                 )}
               >
-                <item.icon className={cn("w-5 h-5", isActive ? "text-primary drop-shadow-[0_0_8px_rgba(29,185,84,0.8)]" : "")} />
+                <item.icon className="w-5 h-5" />
                 {item.label}
               </Link>
             );
@@ -132,16 +128,16 @@ export function Layout({ children }: { children: ReactNode }) {
         
         <div className="p-4 border-t border-border/50 space-y-2">
           <div className="flex items-center gap-3 px-4 py-3 rounded-lg bg-secondary/50 border border-border">
-            <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center border border-primary/30 overflow-hidden">
+            <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center border border-white/20 overflow-hidden">
               {user?.profileImage ? (
                 <img src={user.profileImage} alt="avatar" className="w-full h-full object-cover" />
               ) : (
-                <User className="w-4 h-4 text-primary" />
+                <User className="w-4 h-4 text-white" />
               )}
             </div>
             <div className="flex-1 overflow-hidden">
-              <p className="text-sm font-medium text-white truncate">{user?.firstName || user?.username || "Developer"}</p>
-              <p className="text-xs text-primary font-mono truncate">Phase 1 Active</p>
+              <p className="text-sm font-medium text-white truncate">{user?.firstName || "Developer"}</p>
+              <p className="text-xs text-muted-foreground font-mono truncate">Phase 1 Active</p>
             </div>
           </div>
           <button
@@ -158,10 +154,7 @@ export function Layout({ children }: { children: ReactNode }) {
       <main className="flex-1 flex flex-col min-w-0 overflow-hidden">
         {/* Mobile Header */}
         <header className="md:hidden flex items-center justify-between p-4 border-b border-border bg-sidebar">
-          <div className="flex items-center gap-2">
-            <Terminal className="w-6 h-6 text-primary" />
-            <h1 className="font-mono font-bold text-base text-white">SYSTEM.<span className="text-primary">INIT</span></h1>
-          </div>
+          <span className="font-mono font-bold text-lg text-white tracking-widest">SALMA</span>
           <button onClick={logout} className="text-muted-foreground">
             <LogOut className="w-4 h-4" />
           </button>
@@ -177,7 +170,7 @@ export function Layout({ children }: { children: ReactNode }) {
                 href={item.href}
                 className={cn(
                   "flex flex-col items-center gap-1 p-2 rounded-lg transition-colors",
-                  isActive ? "text-primary" : "text-muted-foreground"
+                  isActive ? "text-white" : "text-muted-foreground"
                 )}
               >
                 <item.icon className="w-5 h-5" />

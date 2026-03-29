@@ -92,9 +92,22 @@ export default function Pomodoro() {
     }
   };
 
+  const openFocusMusic = () => {
+    const SPOTIFY_APP_URI = "spotify:playlist:37i9dQZF1DX8Uebhn9wzrS";
+    const SPOTIFY_WEB_URL = "https://open.spotify.com/playlist/37i9dQZF1DX8Uebhn9wzrS";
+    let appLaunched = false;
+    const onBlur = () => { appLaunched = true; };
+    window.addEventListener("blur", onBlur, { once: true });
+    window.location.href = SPOTIFY_APP_URI;
+    setTimeout(() => {
+      window.removeEventListener("blur", onBlur);
+      if (!appLaunched) window.open(SPOTIFY_WEB_URL, "_blank");
+    }, 1500);
+  };
+
   const toggleTimer = () => {
     if (!isActive && !isStarted && mode === "work") {
-      window.open("https://open.spotify.com/search/lo-fi%20study", "_blank");
+      openFocusMusic();
     }
     if (!isActive) setIsStarted(true);
     setIsActive((a) => !a);
@@ -217,9 +230,9 @@ export default function Pomodoro() {
           </button>
 
           <button
-            onClick={() => window.open("https://open.spotify.com/search/lo-fi%20study", "_blank")}
+            onClick={openFocusMusic}
             className="w-12 h-12 flex items-center justify-center rounded-full bg-secondary border border-border text-muted-foreground hover:text-white hover:border-white/30 transition-all"
-            title="Open Spotify"
+            title="Lo-fi Focus Music (opens Spotify app or web)"
           >
             <Music className="w-5 h-5" />
           </button>
