@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: salmans-system
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: >
+      npm install -g pnpm &&
+      pnpm install &&
+      BASE_PATH=/ pnpm --filter @workspace/roadmap-app run build &&
+      pnpm --filter @workspace/api-server run build
+    startCommand: pnpm --filter @workspace/api-server run start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: DATABASE_URL
+        sync: false
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: GROQ_API_KEY
+        sync: false
+      - key: N8N_WEBHOOK_URL
+        sync: false
+      - key: N8N_WEEKLY_WEBHOOK_URL
+        sync: false
+      - key: APP_PASSWORD
+        sync: false

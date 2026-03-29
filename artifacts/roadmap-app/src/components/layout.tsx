@@ -1,7 +1,7 @@
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
-import { useAuth } from "@workspace/replit-auth-web";
+import { useAuth } from "@/lib/auth";
 import { 
   LayoutDashboard, 
   CheckSquare, 
@@ -11,7 +11,9 @@ import {
   FileText,
   LogIn,
   LogOut,
-  User
+  User,
+  Eye,
+  EyeOff
 } from "lucide-react";
 
 const navItems = [
@@ -25,6 +27,25 @@ const navItems = [
 
 function LoginScreen() {
   const { login } = useAuth();
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!password.trim()) return;
+    setLoading(true);
+    setError("");
+    try {
+      await login(password);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Login failed");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-4">
       <div className="max-w-md w-full text-center space-y-8">
@@ -58,13 +79,39 @@ function LoginScreen() {
             ))}
           </div>
 
-          <button
-            onClick={login}
-            className="w-full flex items-center justify-center gap-3 bg-primary hover:bg-primary/90 text-black font-bold py-3 px-6 rounded-lg transition-all duration-200 font-mono text-sm tracking-wide"
-          >
-            <LogIn className="w-5 h-5" />
-            LOG IN TO ACCESS SYSTEM
-          </button>
+          <form onSubmit={handleLogin} className="space-y-4">
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Enter password"
+                autoComplete="current-password"
+                className="w-full bg-background border border-border rounded-lg py-3 px-4 text-white font-mono text-sm placeholder:text-muted-foreground focus:outline-none focus:border-white/40 pr-12"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword((v) => !v)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-white transition-colors"
+                tabIndex={-1}
+              >
+                {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+              </button>
+            </div>
+
+            {error && (
+              <p className="text-red-400 text-xs font-mono text-left">{error}</p>
+            )}
+
+            <button
+              type="submit"
+              disabled={loading || !password.trim()}
+              className="w-full flex items-center justify-center gap-3 bg-primary hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed text-black font-bold py-3 px-6 rounded-lg transition-all duration-200 font-mono text-sm tracking-wide"
+            >
+              <LogIn className="w-5 h-5" />
+              {loading ? "LOGGING IN..." : "LOG IN TO ACCESS SYSTEM"}
+            </button>
+          </form>
         </div>
 
         <p className="text-muted-foreground text-xs font-mono">
@@ -129,14 +176,10 @@ export function Layout({ children }: { children: ReactNode }) {
         <div className="p-4 border-t border-border/50 space-y-2">
           <div className="flex items-center gap-3 px-4 py-3 rounded-lg bg-secondary/50 border border-border">
             <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center border border-white/20 overflow-hidden">
-              {user?.profileImage ? (
-                <img src={user.profileImage} alt="avatar" className="w-full h-full object-cover" />
-              ) : (
-                <User className="w-4 h-4 text-white" />
-              )}
+              <User className="w-4 h-4 text-white" />
             </div>
             <div className="flex-1 overflow-hidden">
-              <p className="text-sm font-medium text-white truncate">{user?.firstName || "Developer"}</p>
+              <p className="text-sm font-medium text-white truncate">{user?.firstName || "Salman"}</p>
               <p className="text-xs text-muted-foreground font-mono truncate">Phase 1 Active</p>
             </div>
           </div>
