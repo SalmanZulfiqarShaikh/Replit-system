@@ -1,22 +1,32 @@
 openapi: 3.1.0
 info:
-  # Do not change the title, if the title changes, the import paths will be broken
   title: Api
   version: 0.1.0
-  description: API specification
+  description: AI Roadmap Accountability System API
 servers:
   - url: /api
     description: Base API path
 tags:
   - name: health
     description: Health operations
+  - name: auth
+    description: Authentication
+  - name: checkin
+    description: Daily check-in
+  - name: pomodoro
+    description: Pomodoro sessions
+  - name: progress
+    description: Progress tracking
+  - name: ai
+    description: AI features
+  - name: user
+    description: User data
 paths:
   /healthz:
     get:
       operationId: healthCheck
       tags: [health]
       summary: Health check
-      description: Returns server health status
       responses:
         "200":
           description: Healthy
@@ -24,6 +34,320 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+
+  /auth/user:
+    get:
+      operationId: getCurrentAuthUser
+      tags: [auth]
+      summary: Get current authenticated user
+      parameters:
+        - $ref: '#/components/parameters/AuthorizationSessionHeader'
+        - $ref: '#/components/parameters/SessionCookie'
+      responses:
+        "200":
+          description: Current user info
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthUserEnvelope"
+        "401":
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /login:
+    get:
+      operationId: beginBrowserLogin
+      tags: [auth]
+      summary: Start browser login
+      parameters:
+        - name: returnTo
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        "302":
+          description: Redirect to OIDC
+
+  /callback:
+    get:
+      operationId: handleBrowserLoginCallback
+      tags: [auth]
+      summary: OIDC callback
+      responses:
+        "302":
+          description: Redirect after login
+
+  /logout:
+    get:
+      operationId: logoutBrowserSession
+      tags: [auth]
+      summary: Logout browser session
+      parameters:
+        - $ref: '#/components/parameters/AuthorizationSessionHeader'
+        - $ref: '#/components/parameters/SessionCookie'
+      responses:
+        "302":
+          description: Redirect to OIDC logout
+
+  /mobile-auth/token-exchange:
+    post:
+      operationId: exchangeMobileAuthorizationCode
+      tags: [auth]
+      summary: Exchange mobile OIDC code
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MobileTokenExchangeRequest'
+      responses:
+        "200":
+          description: Session token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MobileTokenExchangeSuccess'
+
+  /mobile-auth/logout:
+    post:
+      operationId: logoutMobileSession
+      tags: [auth]
+      summary: Mobile logout
+      parameters:
+        - $ref: '#/components/parameters/AuthorizationSessionHeader'
+      responses:
+        "200":
+          description: Logged out
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LogoutSuccess'
+
+  /checkin/today:
+    get:
+      operationId: getTodayCheckin
+      tags: [checkin]
+      summary: Get today's check-in if it exists
+      responses:
+        "200":
+          description: Today's check-in
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DailyCheckin"
+        "404":
+          description: No check-in today
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /checkin:
+    post:
+      operationId: createCheckin
+      tags: [checkin]
+      summary: Create or update today's check-in
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateCheckinBody"
+      responses:
+        "200":
+          description: Check-in created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DailyCheckin"
+
+  /pomodoro/sessions:
+    get:
+      operationId: getPomodoroSessions
+      tags: [pomodoro]
+      summary: Get recent pomodoro sessions
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: number
+      responses:
+        "200":
+          description: List of sessions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/PomodoroSession"
+    post:
+      operationId: createPomodoroSession
+      tags: [pomodoro]
+      summary: Log a completed pomodoro session
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreatePomodoroSessionBody"
+      responses:
+        "200":
+          description: Session logged
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PomodoroSession"
+
+  /progress/episodes:
+    get:
+      operationId: getEpisodeProgress
+      tags: [progress]
+      summary: Get all episode completion records
+      responses:
+        "200":
+          description: Episode progress list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/EpisodeProgress"
+    post:
+      operationId: logEpisodeCompletion
+      tags: [progress]
+      summary: Mark an episode as completed
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LogEpisodeBody"
+      responses:
+        "200":
+          description: Episode logged
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EpisodeProgress"
+
+  /progress/episodes/{episodeId}:
+    delete:
+      operationId: removeEpisodeCompletion
+      tags: [progress]
+      summary: Unmark an episode as completed
+      parameters:
+        - name: episodeId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Episode removed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+
+  /progress/hours:
+    get:
+      operationId: getHoursLog
+      tags: [progress]
+      summary: Get hours logged (heatmap data)
+      parameters:
+        - name: days
+          in: query
+          schema:
+            type: number
+      responses:
+        "200":
+          description: Hours log
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/DailyHoursLog"
+
+  /progress/stats:
+    get:
+      operationId: getProgressStats
+      tags: [progress]
+      summary: Get overall progress statistics
+      responses:
+        "200":
+          description: Progress stats
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProgressStats"
+
+  /ai/schedule:
+    post:
+      operationId: generateSchedule
+      tags: [ai]
+      summary: Generate AI daily schedule
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GenerateScheduleBody"
+      responses:
+        "200":
+          description: AI generated schedule
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AIScheduleResponse"
+
+  /ai/weekly-report:
+    post:
+      operationId: generateWeeklyReport
+      tags: [ai]
+      summary: Generate AI weekly accountability report
+      responses:
+        "200":
+          description: Weekly report
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AIWeeklyReportResponse"
+
+  /user/profile:
+    get:
+      operationId: getUserProfile
+      tags: [user]
+      summary: Get user profile with stats
+      responses:
+        "200":
+          description: User profile
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserProfile"
+    patch:
+      operationId: updateUserProfile
+      tags: [user]
+      summary: Update user profile
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateUserProfileBody"
+      responses:
+        "200":
+          description: Updated profile
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserProfile"
+
 components:
   schemas:
     HealthStatus:
@@ -31,6 +355,313 @@ components:
       properties:
         status:
           type: string
-      required:
-        - status
+      required: [status]
 
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+      required: [error]
+
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+      required: [success]
+
+    AuthUser:
+      type: object
+      properties:
+        id:
+          type: string
+        username:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        profileImage:
+          type: string
+          nullable: true
+        isAuthenticated:
+          type: boolean
+      required: [id, username, isAuthenticated]
+
+    DailyCheckin:
+      type: object
+      properties:
+        id:
+          type: number
+        userId:
+          type: string
+        date:
+          type: string
+        hasUni:
+          type: boolean
+        hasOffice:
+          type: boolean
+        tasks:
+          type: string
+        availableHours:
+          type: number
+        pomodoroSessions:
+          type: number
+        hoursLogged:
+          type: number
+        aiSchedule:
+          type: string
+          nullable: true
+        createdAt:
+          type: string
+      required: [id, userId, date, hasUni, hasOffice, tasks, availableHours, pomodoroSessions, hoursLogged, createdAt]
+
+    CreateCheckinBody:
+      type: object
+      properties:
+        hasUni:
+          type: boolean
+        hasOffice:
+          type: boolean
+        tasks:
+          type: string
+        availableHours:
+          type: number
+      required: [hasUni, hasOffice, tasks, availableHours]
+
+    PomodoroSession:
+      type: object
+      properties:
+        id:
+          type: number
+        userId:
+          type: string
+        date:
+          type: string
+        workDuration:
+          type: number
+        breakDuration:
+          type: number
+        completedAt:
+          type: string
+      required: [id, userId, date, workDuration, breakDuration, completedAt]
+
+    CreatePomodoroSessionBody:
+      type: object
+      properties:
+        workDuration:
+          type: number
+        breakDuration:
+          type: number
+      required: [workDuration, breakDuration]
+
+    EpisodeProgress:
+      type: object
+      properties:
+        id:
+          type: number
+        userId:
+          type: string
+        episodeId:
+          type: string
+        episodeTitle:
+          type: string
+        phase:
+          type: string
+        completedAt:
+          type: string
+      required: [id, userId, episodeId, episodeTitle, phase, completedAt]
+
+    LogEpisodeBody:
+      type: object
+      properties:
+        episodeId:
+          type: string
+        episodeTitle:
+          type: string
+        phase:
+          type: string
+      required: [episodeId, episodeTitle, phase]
+
+    DailyHoursLog:
+      type: object
+      properties:
+        date:
+          type: string
+        hours:
+          type: number
+        sessions:
+          type: number
+      required: [date, hours, sessions]
+
+    ProgressStats:
+      type: object
+      properties:
+        totalHours:
+          type: number
+        currentStreak:
+          type: number
+        longestStreak:
+          type: number
+        totalEpisodes:
+          type: number
+        totalPomodoros:
+          type: number
+        hoursThisWeek:
+          type: number
+        hoursThisMonth:
+          type: number
+        lastCheckIn:
+          type: string
+          nullable: true
+      required: [totalHours, currentStreak, longestStreak, totalEpisodes, totalPomodoros, hoursThisWeek, hoursThisMonth]
+
+    GenerateScheduleBody:
+      type: object
+      properties:
+        hasUni:
+          type: boolean
+        hasOffice:
+          type: boolean
+        tasks:
+          type: string
+        availableHours:
+          type: number
+        currentPhase:
+          type: string
+      required: [hasUni, hasOffice, tasks, availableHours, currentPhase]
+
+    AIScheduleResponse:
+      type: object
+      properties:
+        schedule:
+          type: string
+        tasks:
+          type: array
+          items:
+            type: string
+        pomodoroRecommendation:
+          type: string
+      required: [schedule, tasks, pomodoroRecommendation]
+
+    AIWeeklyReportResponse:
+      type: object
+      properties:
+        report:
+          type: string
+        hoursLogged:
+          type: number
+        episodesCompleted:
+          type: number
+        nextWeekGoal:
+          type: string
+        motivationalMessage:
+          type: string
+      required: [report, hoursLogged, episodesCompleted, nextWeekGoal, motivationalMessage]
+
+    UserProfile:
+      type: object
+      properties:
+        id:
+          type: string
+        username:
+          type: string
+        firstName:
+          type: string
+        currentPhase:
+          type: string
+        totalHoursLogged:
+          type: number
+        currentStreak:
+          type: number
+        longestStreak:
+          type: number
+        lastCheckIn:
+          type: string
+          nullable: true
+        achievements:
+          type: array
+          items:
+            type: string
+      required: [id, username, currentPhase, totalHoursLogged, currentStreak, longestStreak, achievements]
+
+    UpdateUserProfileBody:
+      type: object
+      properties:
+        currentPhase:
+          type: string
+        firstName:
+          type: string
+
+    AuthUserEnvelope:
+      type: object
+      required: [user]
+      properties:
+        user:
+          oneOf:
+            - $ref: '#/components/schemas/AuthUserDetails'
+            - type: 'null'
+
+    AuthUserDetails:
+      type: object
+      required: [id]
+      properties:
+        id:
+          type: string
+        email:
+          type: [string, 'null']
+        firstName:
+          type: [string, 'null']
+        lastName:
+          type: [string, 'null']
+        profileImageUrl:
+          type: [string, 'null']
+
+    MobileTokenExchangeRequest:
+      type: object
+      required: [code, code_verifier, redirect_uri, state]
+      properties:
+        code:
+          type: string
+          minLength: 1
+        code_verifier:
+          type: string
+          minLength: 1
+        redirect_uri:
+          type: string
+          minLength: 1
+        state:
+          type: string
+          minLength: 1
+        nonce:
+          type: string
+          minLength: 1
+
+    MobileTokenExchangeSuccess:
+      type: object
+      required: [token]
+      properties:
+        token:
+          type: string
+
+    LogoutSuccess:
+      type: object
+      required: [success]
+      properties:
+        success:
+          type: boolean
+
+  parameters:
+    AuthorizationSessionHeader:
+      name: Authorization
+      in: header
+      required: false
+      schema:
+        type: string
+    SessionCookie:
+      name: sid
+      in: cookie
+      required: false
+      schema:
+        type: string

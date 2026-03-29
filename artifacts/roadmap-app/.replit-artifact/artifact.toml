@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "AI Roadmap Accountability"
+version = "1.0.0"
+id = "artifacts/roadmap-app"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 21505
+
+[services.development]
+run = "pnpm --filter @workspace/roadmap-app run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/roadmap-app", "run", "build" ]
+publicDir = "artifacts/roadmap-app/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "21505"
+BASE_PATH = "/"

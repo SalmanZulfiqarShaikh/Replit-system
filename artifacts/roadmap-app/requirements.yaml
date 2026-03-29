@@ -1,0 +1,15 @@
+packages:
+  "framer-motion": "For sleek page transitions and micro-interactions"
+  "date-fns": "For formatting dates and building the heatmap"
+  "clsx": "For conditional class names"
+  "tailwind-merge": "For merging tailwind classes safely"
+  "lucide-react": "For UI icons"
+
+images:
+  - path: "artifacts/roadmap-app/public/images/logo.png"
+    description: "Minimalist abstract geometric logo mark in neon green on a pure black background, hacker aesthetic, cyber theme, clean vector style"
+    aspect_ratio: "1:1"
+
+notes:
+  - Using generated API client from @workspace/api-client-react
+  - Always forcing dark mode hacker aesthetic
