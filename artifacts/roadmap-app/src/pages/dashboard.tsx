@@ -1,9 +1,11 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Flame, Clock, PlayCircle, Timer, Activity, Award, TrendingUp, Play, ExternalLink, CheckSquare2 } from "lucide-react";
+import { Flame, Clock, PlayCircle, Timer, Activity, Award, TrendingUp, Play, ExternalLink, CheckSquare2, Check } from "lucide-react";
 import { useGetProgressStats, useGetHoursLog, useGetUserProfile, useGetEpisodeProgress, useGetTodayCheckin } from "@workspace/api-client-react";
 import { Heatmap } from "@/components/heatmap";
 import { ROADMAP_PHASES } from "@/lib/roadmap-data";
 import { Link } from "wouter";
+import { cn } from "@/lib/utils";
 
 function useNowPlaying(completedIds: Set<string>) {
   for (const phase of ROADMAP_PHASES) {
@@ -28,6 +30,26 @@ function parseTasks(aiSchedule: string | null | undefined): string[] {
     .filter(Boolean);
 }
 
+function getTodayKey() {
+  return `completed-tasks-${new Date().toISOString().split("T")[0]}`;
+}
+
+function loadCompleted(): Set<number> {
+  try {
+    const raw = localStorage.getItem(getTodayKey());
+    if (!raw) return new Set();
+    return new Set(JSON.parse(raw) as number[]);
+  } catch {
+    return new Set();
+  }
+}
+
+function saveCompleted(s: Set<number>) {
+  try {
+    localStorage.setItem(getTodayKey(), JSON.stringify([...s]));
+  } catch {}
+}
+
 export default function Dashboard() {
   const { data: stats, isLoading: statsLoading } = useGetProgressStats();
   const { data: hoursLog, isLoading: hoursLoading } = useGetHoursLog({ days: 180 });
@@ -38,6 +60,29 @@ export default function Dashboard() {
   const completedIds = new Set(completedEpisodes?.map(e => e.episodeId) || []);
   const nowPlaying = useNowPlaying(completedIds);
   const todayTasks = parseTasks(todayCheckin?.aiSchedule);
+
+  const [completedTasks, setCompletedTasks] = useState<Set<number>>(loadCompleted);
+
+  // Reload from storage when tasks change (e.g. new check-in)
+  useEffect(() => {
+    setCompletedTasks(loadCompleted());
+  }, [todayCheckin?.id]);
+
+  const toggleTask = (i: number) => {
+    setCompletedTasks((prev) => {
+      const next = new Set(prev);
+      if (next.has(i)) {
+        next.delete(i);
+      } else {
+        next.add(i);
+      }
+      saveCompleted(next);
+      return next;
+    });
+  };
+
+  const doneCount = completedTasks.size;
+  const totalCount = todayTasks.length;
 
   const currentHours = stats?.hoursThisWeek || 0;
   const targetHours = 20;
@@ -108,18 +153,46 @@ export default function Dashboard() {
 
         {/* Today's Mission */}
         <div className="bg-card border border-border rounded-xl p-5">
-          <h2 className="text-xs font-mono font-bold text-white uppercase tracking-wider mb-4 flex items-center gap-2">
-            <CheckSquare2 className="w-3.5 h-3.5" />
-            Today's Mission
-          </h2>
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-xs font-mono font-bold text-white uppercase tracking-wider flex items-center gap-2">
+              <CheckSquare2 className="w-3.5 h-3.5" />
+              Today's Mission
+            </h2>
+            {totalCount > 0 && (
+              <span className="text-xs font-mono text-muted-foreground tabular-nums">
+                {doneCount}/{totalCount}
+              </span>
+            )}
+          </div>
           {todayTasks.length > 0 ? (
             <ul className="space-y-2">
-              {todayTasks.map((task, i) => (
-                <li key={i} className="flex items-start gap-2.5 text-sm font-mono">
-                  <div className="mt-1.5 w-3 h-3 rounded border border-border flex-shrink-0" />
-                  <span className="text-foreground/90 leading-snug">{task}</span>
-                </li>
-              ))}
+              {todayTasks.map((task, i) => {
+                const done = completedTasks.has(i);
+                return (
+                  <li key={i}>
+                    <button
+                      onClick={() => toggleTask(i)}
+                      className={cn(
+                        "w-full flex items-start gap-2.5 text-sm font-mono text-left group transition-all rounded-lg px-2 py-1.5 -mx-2 hover:bg-white/5",
+                      )}
+                    >
+                      <span
+                        className={cn(
+                          "mt-0.5 w-4 h-4 rounded border flex-shrink-0 flex items-center justify-center transition-all",
+                          done
+                            ? "bg-white border-white"
+                            : "border-border group-hover:border-white/40"
+                        )}
+                      >
+                        {done && <Check className="w-2.5 h-2.5 text-black" strokeWidth={3} />}
+                      </span>
+                      <span className={cn("leading-snug", done ? "line-through text-muted-foreground" : "text-foreground/90")}>
+                        {task}
+                      </span>
+                    </button>
+                  </li>
+                );
+              })}
             </ul>
           ) : (
             <div className="py-4 text-center">
@@ -128,6 +201,16 @@ export default function Dashboard() {
                 Do Check-in →
               </Link>
             </div>
+          )}
+          {totalCount > 0 && doneCount === totalCount && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="mt-4 px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-center"
+            >
+              <p className="text-xs font-mono text-white font-bold tracking-wider">ALL TASKS COMPLETE</p>
+              <p className="text-[11px] text-muted-foreground font-mono mt-0.5">Mission accomplished. Good work.</p>
+            </motion.div>
           )}
         </div>
       </div>
