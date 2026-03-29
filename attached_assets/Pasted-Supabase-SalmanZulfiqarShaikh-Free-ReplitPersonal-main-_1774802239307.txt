@@ -1,0 +1,108 @@
+Supabase
+SalmanZulfiqarShaikh
+Free
+
+ReplitPersonal
+
+main
+Production
+
+
+Connect
+Feedback
+
+Search...
+
+K
+
+
+
+
+
+SalmanZulfiqarShaikh
+
+Database
+Database Management
+Schema Visualizer
+Tables
+Functions
+Triggers
+Enumerated Types
+Extensions
+Indexes
+Publications
+Configuration
+Roles
+Policies
+Settings
+Platform
+Replication
+Backups
+Migrations
+Wrappers
+Database Webhooks
+Tools
+Security Advisor
+Performance Advisor
+Query Performance
+Database Settings
+Connections, security, and network configuration
+Database password
+Used for direct Postgres connections
+Reset database password
+The database password isn’t viewable after creation. Resetting it will break any existing connections.
+
+
+Reset password
+Connection pooling
+Docs
+Connection poolers
+Configuration is shared across all connection poolers.
+
+Shared
+15
+connections
+Connection pool size
+The maximum number of connections made to the underlying Postgres cluster, per user+db combination. Pool size has a default of 15 based on your compute size of Nano.
+
+200
+clients
+Max client connections
+The maximum number of concurrent client connections allowed. This value is fixed at 200 based on your compute size of Nano and cannot be changed. Learn more
+
+
+Cancel
+
+Save
+SSL configuration
+Docs
+
+Enforce SSL on incoming connections
+Reject non-SSL connections to your database
+
+
+Download certificate
+SSL Certificate
+Use this certificate when connecting to your database to prevent snooping and man-in-the-middle attacks.
+
+Disk management
+Docs
+Disk Management has moved
+Disk configuration is now managed alongside Project Compute on the new Compute and Disk page.
+
+Go to Compute and Disk
+Network restrictions
+Docs
+
+Add restriction
+Your database can be accessed by all IP addresses
+
+You may start limiting access to your database by adding a network restriction.
+
+
+Restrict all access
+Network bans
+IP addresses temporarily blocked due to suspicious traffic
+Docs
+There are no banned IP addresses for your project
+Settings | Database | Supabase
