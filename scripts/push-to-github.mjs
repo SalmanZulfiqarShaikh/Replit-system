@@ -1,7 +1,7 @@
 import git from 'isomorphic-git';
-import http from 'isomorphic-git/http/node';
 import fs from 'fs';
 import path from 'path';
+import https from 'https';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -15,9 +15,53 @@ if (!TOKEN) {
   process.exit(1);
 }
 
+const AUTH_HEADER = 'Basic ' + Buffer.from('SalmanZulfiqarShaikh:' + TOKEN).toString('base64');
+
+// Custom HTTP plugin that always injects auth headers
+const http = {
+  async request({ url, method, headers, body }) {
+    const u = new URL(url);
+    const authHeaders = {
+      ...headers,
+      'Authorization': AUTH_HEADER,
+    };
+
+    return new Promise((resolve, reject) => {
+      const options = {
+        hostname: u.hostname,
+        port: 443,
+        path: u.pathname + u.search,
+        method,
+        headers: authHeaders,
+      };
+      const req = https.request(options, (res) => {
+        console.log(`  ${method} ${url.split('?')[0].replace('https://github.com', '')} → ${res.statusCode}`);
+        resolve({
+          url,
+          method,
+          statusCode: res.statusCode,
+          headers: res.headers,
+          body: [res],
+        });
+      });
+      req.on('error', reject);
+      if (body) {
+        (async () => {
+          try {
+            for await (const chunk of body) req.write(chunk);
+            req.end();
+          } catch (e) { reject(e); }
+        })();
+      } else {
+        req.end();
+      }
+    });
+  }
+};
+
 async function run() {
   try {
-    console.log('Setting git author config...');
+    console.log('Configuring git author...');
     await git.setConfig({ fs, dir, path: 'user.name', value: 'Salman Zulfiqar' });
     await git.setConfig({ fs, dir, path: 'user.email', value: 'ss3000569@gmail.com' });
 
@@ -28,10 +72,10 @@ async function run() {
     const sha = await git.commit({
       fs,
       dir,
-      message: "Salman's System - migration complete (password auth + Supabase + Render)",
+      message: "Salman's System — migration complete (password auth + Supabase + Render config)",
       author: { name: 'Salman Zulfiqar', email: 'ss3000569@gmail.com' },
     });
-    console.log(`Commit created: ${sha}`);
+    console.log(`Commit: ${sha}`);
 
     console.log('Setting remote...');
     try {
@@ -42,23 +86,20 @@ async function run() {
     }
 
     console.log('Pushing to GitHub...');
-    const pushResult = await git.push({
+    const result = await git.push({
       fs,
       http,
       dir,
       remote: 'github',
       remoteRef: 'main',
       force: true,
-      onAuth: () => ({ username: 'token', password: TOKEN }),
-      onProgress: (progress) => {
-        if (progress.phase) process.stdout.write(`\r${progress.phase} ${progress.loaded || ''}/${progress.total || ''}`);
-      },
     });
 
-    console.log('\nPush complete!', pushResult);
+    console.log('\nPush successful!');
+    console.log('Result:', JSON.stringify(result, null, 2));
     process.exit(0);
   } catch (err) {
-    console.error('Push failed:', err.message || err);
+    console.error('\nPush failed:', err.message || err);
     process.exit(1);
   }
 }
