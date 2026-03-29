@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Flame, Clock, PlayCircle, Timer, Activity, Award, TrendingUp, Play, ExternalLink, CheckSquare2, Check } from "lucide-react";
 import { useGetProgressStats, useGetHoursLog, useGetUserProfile, useGetEpisodeProgress, useGetTodayCheckin } from "@workspace/api-client-react";
@@ -6,6 +6,7 @@ import { Heatmap } from "@/components/heatmap";
 import { ROADMAP_PHASES } from "@/lib/roadmap-data";
 import { Link } from "wouter";
 import { cn } from "@/lib/utils";
+import { useQueryClient } from "@tanstack/react-query";
 
 function useNowPlaying(completedIds: Set<string>) {
   for (const phase of ROADMAP_PHASES) {
@@ -30,27 +31,16 @@ function parseTasks(aiSchedule: string | null | undefined): string[] {
     .filter(Boolean);
 }
 
-function getTodayKey() {
-  return `completed-tasks-${new Date().toISOString().split("T")[0]}`;
-}
-
-function loadCompleted(): Set<number> {
-  try {
-    const raw = localStorage.getItem(getTodayKey());
-    if (!raw) return new Set();
-    return new Set(JSON.parse(raw) as number[]);
-  } catch {
-    return new Set();
-  }
-}
-
-function saveCompleted(s: Set<number>) {
-  try {
-    localStorage.setItem(getTodayKey(), JSON.stringify([...s]));
-  } catch {}
+async function patchTaskIndices(indices: number[]) {
+  await fetch("/api/checkin/tasks", {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ indices }),
+  });
 }
 
 export default function Dashboard() {
+  const queryClient = useQueryClient();
   const { data: stats, isLoading: statsLoading } = useGetProgressStats();
   const { data: hoursLog, isLoading: hoursLoading } = useGetHoursLog({ days: 180 });
   const { data: profile } = useGetUserProfile();
@@ -61,29 +51,37 @@ export default function Dashboard() {
   const nowPlaying = useNowPlaying(completedIds);
   const todayTasks = parseTasks(todayCheckin?.aiSchedule);
 
-  const [completedTasks, setCompletedTasks] = useState<Set<number>>(loadCompleted);
+  const serverIndices: number[] = Array.isArray(todayCheckin?.completedTaskIndices)
+    ? (todayCheckin.completedTaskIndices as number[])
+    : [];
 
-  // Reload from storage when tasks change (e.g. new check-in)
+  const [completedTasks, setCompletedTasks] = useState<Set<number>>(new Set(serverIndices));
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Sync from server whenever check-in data loads / changes
   useEffect(() => {
-    setCompletedTasks(loadCompleted());
-  }, [todayCheckin?.id]);
+    setCompletedTasks(new Set(serverIndices));
+  }, [todayCheckin?.id, JSON.stringify(serverIndices)]);
 
   const toggleTask = (i: number) => {
     setCompletedTasks((prev) => {
       const next = new Set(prev);
-      if (next.has(i)) {
-        next.delete(i);
-      } else {
-        next.add(i);
-      }
-      saveCompleted(next);
+      if (next.has(i)) next.delete(i);
+      else next.add(i);
+
+      // Debounce the API call so rapid clicks don't spam the server
+      if (debounceRef.current) clearTimeout(debounceRef.current);
+      debounceRef.current = setTimeout(async () => {
+        await patchTaskIndices([...next]);
+        queryClient.invalidateQueries({ queryKey: ["/api/checkin/today"] });
+      }, 500);
+
       return next;
     });
   };
 
   const doneCount = completedTasks.size;
   const totalCount = todayTasks.length;
-
   const currentHours = stats?.hoursThisWeek || 0;
   const targetHours = 20;
   const progressPercent = Math.min(100, Math.round((currentHours / targetHours) * 100));
@@ -164,6 +162,7 @@ export default function Dashboard() {
               </span>
             )}
           </div>
+
           {todayTasks.length > 0 ? (
             <ul className="space-y-2">
               {todayTasks.map((task, i) => {
@@ -172,16 +171,12 @@ export default function Dashboard() {
                   <li key={i}>
                     <button
                       onClick={() => toggleTask(i)}
-                      className={cn(
-                        "w-full flex items-start gap-2.5 text-sm font-mono text-left group transition-all rounded-lg px-2 py-1.5 -mx-2 hover:bg-white/5",
-                      )}
+                      className="w-full flex items-start gap-2.5 text-sm font-mono text-left group transition-all rounded-lg px-2 py-1.5 -mx-2 hover:bg-white/5"
                     >
                       <span
                         className={cn(
                           "mt-0.5 w-4 h-4 rounded border flex-shrink-0 flex items-center justify-center transition-all",
-                          done
-                            ? "bg-white border-white"
-                            : "border-border group-hover:border-white/40"
+                          done ? "bg-white border-white" : "border-border group-hover:border-white/40"
                         )}
                       >
                         {done && <Check className="w-2.5 h-2.5 text-black" strokeWidth={3} />}
@@ -202,6 +197,7 @@ export default function Dashboard() {
               </Link>
             </div>
           )}
+
           {totalCount > 0 && doneCount === totalCount && (
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}

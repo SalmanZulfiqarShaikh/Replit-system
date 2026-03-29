@@ -1,4 +1,4 @@
-import { pgTable, serial, text, boolean, integer, real, timestamp } from "drizzle-orm/pg-core";
+import { pgTable, serial, text, boolean, integer, real, timestamp, jsonb } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod/v4";
 import { usersTable } from "./auth";
@@ -14,6 +14,7 @@ export const dailyCheckinsTable = pgTable("daily_checkins", {
   pomodoroSessions: integer("pomodoro_sessions").notNull().default(0),
   hoursLogged: real("hours_logged").notNull().default(0),
   aiSchedule: text("ai_schedule"),
+  completedTaskIndices: jsonb("completed_task_indices").notNull().default([]),
   createdAt: timestamp("created_at").notNull().defaultNow(),
 });
 

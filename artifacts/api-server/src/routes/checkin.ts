@@ -3,6 +3,7 @@ import { db } from "@workspace/db";
 import { dailyCheckinsTable, userProfilesTable } from "@workspace/db/schema";
 import { eq, and } from "drizzle-orm";
 import { CreateCheckinBody } from "@workspace/api-zod";
+import { z } from "zod/v4";
 
 const router: IRouter = Router();
 
@@ -50,6 +51,7 @@ router.post("/checkin", async (req, res) => {
         hasOffice: body.hasOffice,
         tasks: body.tasks,
         availableHours: body.availableHours,
+        completedTaskIndices: [],
       })
       .where(eq(dailyCheckinsTable.id, existing.id))
       .returning();
@@ -63,6 +65,7 @@ router.post("/checkin", async (req, res) => {
         hasOffice: body.hasOffice,
         tasks: body.tasks,
         availableHours: body.availableHours,
+        completedTaskIndices: [],
       })
       .returning();
 
@@ -70,6 +73,38 @@ router.post("/checkin", async (req, res) => {
   }
 
   res.json(checkin);
+});
+
+const ToggleTaskBody = z.object({
+  indices: z.array(z.number().int().min(0)),
+});
+
+router.patch("/checkin/tasks", async (req, res) => {
+  if (!req.isAuthenticated()) {
+    res.status(401).json({ error: "Unauthorized" });
+    return;
+  }
+
+  const { indices } = ToggleTaskBody.parse(req.body);
+  const today = getTodayDate();
+
+  const [existing] = await db
+    .select()
+    .from(dailyCheckinsTable)
+    .where(and(eq(dailyCheckinsTable.userId, req.user.id), eq(dailyCheckinsTable.date, today)));
+
+  if (!existing) {
+    res.status(404).json({ error: "No check-in found for today" });
+    return;
+  }
+
+  const [updated] = await db
+    .update(dailyCheckinsTable)
+    .set({ completedTaskIndices: indices })
+    .where(eq(dailyCheckinsTable.id, existing.id))
+    .returning();
+
+  res.json(updated);
 });
 
 async function updateStreakAfterCheckin(userId: string, today: string) {
